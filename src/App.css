@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-vegan: 'Vegan', sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+  --font-circular: 'Circular', sans-serif;
+
+  /* Color Palette */
+  --color-light-blue: #56A3D0;
+  --color-white: #FFFFFF;
+  --color-gray-light: #D9D9D9;
+  --color-cyan-light: #D7FEFF;
+  --color-teal: #6BAEC4;
+  --color-teal-dark: #325C66;
+  --color-black: #000000;
+  --color-mint: #9AC4C5;
+  --color-blue-dark: #005E89;
+  --color-cyan-pale: #D4FCFD;
+}
+
+@font-face {
+  font-family: 'Vegan';
+  src: url('/fonts/VeganStylePersonalUse-5Y58.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Circular';
+  src: url('/fonts/FontsFree-Net-CircularStd-Bold-5Y58.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 784vh;
+  background: linear-gradient(
+    to bottom,
+    #9AC4C5 0vh,           /* mint desde 0 hasta 100vh (357px) */
+    #9AC4C5 100vh,
+    #D7FEFF 134.45vh,      /* degradado mint a cyan-light desde 100vh hasta 134.45vh (480px) */
+    #D7FEFF 571.43vh,      /* cyan-light desde 134.45vh hasta 571.43vh (2040px) */
+    #9AC4C5 644.26vh,      /* degradado cyan-light a mint desde 571.43vh hasta 644.26vh (2300px) */
+    #9AC4C5 644.26vh,
+    #56A3D0 784vh          /* light-blue desde 644.26vh hasta 784vh (2800px) */
+  );
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
