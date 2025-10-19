@@ -332,6 +332,13 @@ function App() {
         ]}
       />
       <Rio className="absolute top-200 left-5/20" z={1} />
+      <Titulo
+        className="absolute top-250 left-5/20"
+        z={2}
+        linea1="Primera línea"
+        linea2="Segunda línea"
+        linea3="Tercera línea"
+      />
     </>
   )
 }
