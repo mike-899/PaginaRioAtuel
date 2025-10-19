@@ -312,7 +312,7 @@ function Boton({ text = "Lorem", width = 130, height = 50, className = "", href 
   );
 }
 
-function Titulo({ line1 = "Line 1", line2 = "Line 2", line3 = "Line 3", className = "", z = 0 }) {
+function Titulo({ line1 = "", line2 = "", line3 = "", className = "", z = 0 }) {
   return (
     <div
       className={`inline-block ${className}`}
@@ -532,6 +532,7 @@ function TextoConTitulo({
   maxWidth = 400,
   fontSize = "1.25rem",
   className = "",
+  textAlign = "left",
   z = 0
 }) {
   return (
@@ -540,7 +541,7 @@ function TextoConTitulo({
       style={{
         maxWidth: `${maxWidth}px`,
         zIndex: z,
-        textAlign: 'left'
+        textAlign: textAlign
       }}
     >
       <h2
@@ -755,10 +756,33 @@ function App() {
         className="absolute top-1500 left-0"
         z={1}
         height="200vh"
-        title="Río Atuel"
-        text="El Río Atuel es uno de los principales cursos de agua de la provincia de Mendoza, Argentina. Nace en la Cordillera de los Andes y recorre un extenso territorio hasta formar el emblemático Valle de Atuel, conocido por sus paisajes únicos y su importancia histórica y cultural."
-        footerText="© 2025 Río Atuel - Todos los derechos reservados"
       />
+      <Titulo
+        className="absolute top-1550 left-5/20"
+        z={2}
+        line1="Lorem ipsum dolor sit amet"
+        line2="consectetur adipiscing elit."
+      />
+      <TextoConTitulo
+        className="absolute top-1650 left-5/20"
+        z={2}
+        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae porttitor erat. "
+        description="Duis orci diam, mollis ut eros in, eleifend volutpat lectus. Aenean tristique lacinia congue. Nullam diam leo, dignissim fermentum."
+        maxWidth={450}
+        fontSize="2.5rem"
+      />
+      <TextoConTitulo
+        className="absolute top-1650 left-10/20"
+        z={2}
+        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae porttitor erat. "
+        description="Duis orci diam, mollis ut eros in, eleifend volutpat lectus. Aenean tristique lacinia congue. Nullam diam leo, dignissim fermentum."
+        maxWidth={450}
+        fontSize="2.5rem"
+        textAlign='right'
+      />
+      <h1 className="text-white text-left absolute top-1800 left-6/20 leading-[0.8] z-10">
+        <span className="font-vegan">G </span><span className="font-roboto italic">racias</span><br></br>
+      </h1>
     </div>
   )
 }
