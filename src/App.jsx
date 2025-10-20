@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import content from './content.json'
 
-function HBoton({ text = "Lorem", className = "", href = "#", z = 0}) {
+function HBoton({ text = "Lorem", className = "", href = "#", z = 0, isMobileNav = false}) {
   const radius = 30;
   const rectWidth = 150;
   const rectHeight = 60;
@@ -13,8 +13,8 @@ function HBoton({ text = "Lorem", className = "", href = "#", z = 0}) {
     <a
       href={href}
       style={{
-        marginLeft: `-${totalWidth / 2}px`,
-        marginTop: `-${radius}px`,
+        marginLeft: isMobileNav ? 0 : `-${totalWidth / 2}px`,
+        marginTop: isMobileNav ? 0 : `-${radius}px`,
         zIndex: z
       }}
       className={`inline-block ${className}`}
@@ -133,16 +133,28 @@ function Rio({
   ]
 }) {
   const [scrollOffset, setScrollOffset] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY * 0.05; // Adjust multiplier for speed
+      // Use different multiplier for mobile to make scroll more visible
+      const multiplier = isMobile ? 0.15 : 0.05;
+      const offset = window.scrollY * multiplier;
       setScrollOffset(offset);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMobile]);
 
   // Convert percentage coordinates to absolute
   const pathData = pathDataPercent.map(cmd => {
@@ -342,13 +354,13 @@ function Margen({
   );
 }
 
-function Boton({ text = "Lorem", width = 130, height = 50, className = "", href = "#", z = 0}) {
+function Boton({ text = "Lorem", width = 130, height = 50, className = "", href = "#", z = 0, isMobileNav = false}) {
   return (
     <a
       href={href}
       style={{
-        marginLeft: `-${width / 2}px`,
-        marginTop: `-${height / 2}px`,
+        marginLeft: isMobileNav ? 0 : `-${width / 2}px`,
+        marginTop: isMobileNav ? 0 : `-${height / 2}px`,
         zIndex: z
       }}
       className={`inline-block ${className}`}
@@ -392,7 +404,7 @@ function Titulo({ line1 = "", line2 = "", line3 = "", className = "", z = 0, id 
         zIndex: z
       }}
     >
-      <div className="font-circular text-center font-bold leading-tight" style={{ fontSize: '75px' }}>
+      <div className="font-circular text-center font-bold leading-tight" style={{ fontSize: '75px', width: '100%' }}>
         <div style={{ color: 'var(--color-blue-dark)' }}>{line1}</div>
         <div style={{ color: 'var(--color-blue-dark)' }}>{line2}</div>
         <div style={{ color: 'var(--color-light-blue)' }}>{line3}</div>
@@ -447,7 +459,8 @@ function UbicacionCard({
   pinSize = 120,
   className = "",
   z = 0,
-  rotation = 0
+  rotation = 0,
+  isCentered = false
 }) {
   const pinWhiteScale = 1.2;
   const pinOffset = pinSize * 1;
@@ -456,10 +469,10 @@ function UbicacionCard({
     <div
       className={`inline-block ${className}`}
       style={{
-        marginLeft: `-${cardWidth / 2}px`,
-        marginTop: `-${cardHeight / 2}px`,
+        marginLeft: isCentered ? 0 : `-${cardWidth / 2}px`,
+        marginTop: isCentered ? 0 : `-${cardHeight / 2}px`,
         zIndex: z,
-        transform: `rotate(${rotation}deg)`,
+        transform: isCentered ? `translateX(-50%) rotate(${rotation}deg)` : `rotate(${rotation}deg)`,
         transformOrigin: `${cardWidth / 2}px ${pinOffset + cardHeight / 2}px`
       }}
     >
@@ -659,7 +672,8 @@ function ImagenConBorde({
   borderColor = "var(--color-light-blue)",
   className = "",
   z = 0,
-  rotation = 0
+  rotation = 0,
+  onClick = null
 }) {
   return (
     <div
@@ -669,8 +683,11 @@ function ImagenConBorde({
         marginTop: `-${height / 2}px`,
         zIndex: z,
         transform: `rotate(${rotation}deg)`,
-        transformOrigin: 'center'
+        transformOrigin: 'center',
+        cursor: onClick ? 'pointer' : 'default',
+        transition: 'transform 0.3s ease, z-index 0s'
       }}
+      onClick={onClick}
     >
       <svg
         width={width}
@@ -721,52 +738,140 @@ function ImagenConBorde({
 
 function App() {
   const [count, setCount] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [frontImage, setFrontImage] = useState(2) // Image index that's in front (0, 1, or 2)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen)
+  }
+
+  const closeMenu = () => {
+    setMenuOpen(false)
+  }
+
+  const bringImageToFront = (index) => {
+    setFrontImage(index)
+  }
 
   return (
-    <div style={{ overflowX: 'hidden', width: '100vw', height: 'calc(1500px + 200vh)', overflowY: 'auto' }}>
+    <div style={{ overflowX: 'hidden', width: '100vw', height: isMobile ? 'calc(4150px)' : 'calc(1500px + 200vh)', overflowY: 'auto' }}>
       {/* Header Title */}
-      <h1 className="text-white text-left absolute top-25 left-7/20 leading-[0.8]">
-        <span className="font-vegan">{content.header.title.line1}</span>
-        <span className="font-roboto italic">{content.header.title.line2}</span><br></br>
-        <span className="font-vegan pl-30">{content.header.title.line3}</span>
-        <span className="font-roboto italic">{content.header.title.line4}</span>
+      <h1 className={`text-white absolute leading-[0.8] ${isMobile ? 'mobile-header-title' : 'text-left top-25 left-7/20'}`}>
+        {isMobile ? (
+          <div style={{ display: 'flex', flexDirection: 'row', gap: '5px', justifyContent: 'center', alignItems: 'baseline' }}>
+            <span className="font-vegan">{content.header.title.line1}</span>
+            <span className="font-roboto italic">{content.header.title.line2}</span>
+            <span className="font-vegan">{content.header.title.line3}</span>
+            <span className="font-roboto italic">{content.header.title.line4}</span>
+          </div>
+        ) : (
+          <>
+            <span className="font-vegan">{content.header.title.line1}</span>
+            <span className="font-roboto italic">{content.header.title.line2}</span><br></br>
+            <span className="font-vegan pl-30">{content.header.title.line3}</span>
+            <span className="font-roboto italic">{content.header.title.line4}</span>
+          </>
+        )}
       </h1>
 
+      {/* Hamburger Menu Button - Mobile Only */}
+      {isMobile && (
+        <>
+          <div className={`mobile-hamburger ${menuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          {/* Mobile Menu Panel */}
+          <div className={`mobile-menu-panel ${menuOpen ? 'open' : ''}`} onClick={closeMenu}>
+            {content.navigation.mainButtons.map((btn, index) => (
+              <Boton
+                key={`mobile-menu-btn-${index}`}
+                text={btn.text}
+                href={btn.href}
+                z={10000}
+                isMobileNav={true}
+              />
+            ))}
+            <HBoton
+              text={content.navigation.horizontalButton.text}
+              href={content.navigation.horizontalButton.href}
+              z={10000}
+              isMobileNav={true}
+            />
+
+            {/* Small circular buttons */}
+            <div style={{ display: 'flex', gap: '15px', marginTop: '20px' }}>
+              {content.navigation.smallButtons.map((btn, index) => (
+                <Boton
+                  key={`mobile-menu-small-${index}`}
+                  text={btn.text}
+                  href={btn.href}
+                  width={60}
+                  height={60}
+                  z={10000}
+                  isMobileNav={true}
+                />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
       {/* Main Navigation Buttons */}
-      {content.navigation.mainButtons.map((btn, index) => (
-        <Boton
-          key={`main-btn-${index}`}
-          className={`fixed top-20 ${btn.position}`}
-          text={btn.text}
-          href={btn.href}
-          z={9999}
-        />
-      ))}
+      <div className={isMobile ? 'mobile-nav-main' : ''}>
+        {content.navigation.mainButtons.map((btn, index) => (
+          <Boton
+            key={`main-btn-${index}`}
+            className={`${isMobile ? '' : `fixed top-20 ${btn.position}`}`}
+            text={btn.text}
+            href={btn.href}
+            z={9999}
+            isMobileNav={isMobile}
+          />
+        ))}
+      </div>
 
       {/* Small Navigation Buttons */}
-      {content.navigation.smallButtons.map((btn, index) => (
-        <Boton
-          key={`small-btn-${index}`}
-          className={`fixed top-15 ${btn.position}`}
-          text={btn.text}
-          href={btn.href}
-          width={60}
-          height={60}
-          z={9999}
-        />
-      ))}
+      <div className={isMobile ? 'mobile-nav-small' : ''}>
+        {content.navigation.smallButtons.map((btn, index) => (
+          <Boton
+            key={`small-btn-${index}`}
+            className={`${isMobile ? '' : `fixed top-15 ${btn.position}`}`}
+            text={btn.text}
+            href={btn.href}
+            width={60}
+            height={60}
+            z={9999}
+            isMobileNav={isMobile}
+          />
+        ))}
+      </div>
 
       {/* Horizontal Button */}
       <HBoton
-        className={`fixed top-20 ${content.navigation.horizontalButton.position}`}
+        className={`${isMobile ? 'mobile-nav-horizontal' : `fixed top-20 ${content.navigation.horizontalButton.position}`}`}
         text={content.navigation.horizontalButton.text}
         href={content.navigation.horizontalButton.href}
         z={9999}
+        isMobileNav={isMobile}
       />
 
       {/* Margen Component */}
       <Margen
-        className="absolute top-200 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-margen' : 'top-200 left-5/20'}`}
         z={0}
         circles={content.margen.circles}
         clipPathPercent={[
@@ -779,12 +884,12 @@ function App() {
       />
 
       {/* Rio Component */}
-      <Rio className="absolute top-175 left-5/20" z={1} />
+      <Rio className={`absolute ${isMobile ? 'mobile-rio' : 'top-175 left-5/20'}`} z={1} />
 
       {/* Main Title */}
       <Titulo
         id="main-title"
-        className="absolute top-340 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-main-title' : 'top-340 left-5/20'}`}
         z={2}
         line1={content.mainTitle.line1}
         line2={content.mainTitle.line2}
@@ -793,122 +898,133 @@ function App() {
 
       {/* Images */}
       <ImagenConBorde
-        className="absolute top-510 left-2/20"
-        z={2}
+        className={`absolute ${isMobile ? 'mobile-image-stack' : 'top-510 left-2/20'}`}
+        z={frontImage === 0 ? 5 : 2}
         src={content.images[0].src}
-        width={content.images[0].width}
-        height={content.images[0].height}
-        rotation={content.images[0].rotation}
+        width={isMobile ? 250 : content.images[0].width}
+        height={isMobile ? 400 : content.images[0].height}
+        rotation={-10}
+        onClick={() => bringImageToFront(0)}
       />
       <ImagenConBorde
-        className="absolute top-510 left-5/20"
-        z={2}
+        className={`absolute ${isMobile ? 'mobile-image-stack' : 'top-510 left-5/20'}`}
+        z={frontImage === 1 ? 5 : 3}
         src={content.images[1].src}
-        width={content.images[1].width}
-        height={content.images[1].height}
-        rotation={content.images[1].rotation}
+        width={isMobile ? 250 : content.images[1].width}
+        height={isMobile ? 400 : content.images[1].height}
+        rotation={0}
+        onClick={() => bringImageToFront(1)}
       />
       <ImagenConBorde
-        className="absolute top-500 left-7/20"
-        z={2}
+        className={`absolute ${isMobile ? 'mobile-image-stack' : 'top-500 left-7/20'}`}
+        z={frontImage === 2 ? 5 : 4}
         src={content.images[2].src}
-        width={content.images[2].width}
-        height={content.images[2].height}
-        rotation={content.images[2].rotation}
+        width={isMobile ? 250 : content.images[2].width}
+        height={isMobile ? 400 : content.images[2].height}
+        rotation={15}
+        onClick={() => bringImageToFront(2)}
       />
 
       {/* Main Text Block */}
       <TextoConTitulo
-        className="absolute top-450 left-13/20"
+        className={`absolute ${isMobile ? 'mobile-text-block' : 'top-450 left-13/20'}`}
         z={2}
         title={content.mainTextBlock.title}
         description={content.mainTextBlock.description}
-        maxWidth={content.mainTextBlock.maxWidth}
-        fontSize={content.mainTextBlock.fontSize}
+        maxWidth={isMobile ? window.innerWidth * 0.9 : content.mainTextBlock.maxWidth}
+        fontSize={isMobile ? '1.5rem' : content.mainTextBlock.fontSize}
       />
 
       {/* Linea Irregular */}
       <LineaIrregular
-        className="absolute top-1350 left-15/20"
+        className={`absolute ${isMobile ? 'mobile-linea' : 'top-1350 left-15/20'}`}
         z={1}
         width={1000}
         height={1200}
         strokeWidth={5}
         strokeColor="white"
-        scale={5}
+        scale={isMobile ? 1.5 : 5}
       />
 
       {/* Ubicacion Cards */}
       <UbicacionCard
-        className="absolute top-600 left-15/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-1' : 'top-600 left-15/20'}`}
         z={2}
         text={content.ubicacionCards[0].text}
-        cardWidth={content.ubicacionCards[0].cardWidth}
-        cardHeight={content.ubicacionCards[0].cardHeight}
-        rotation={content.ubicacionCards[0].rotation}
+        cardWidth={isMobile ? 320 : content.ubicacionCards[0].cardWidth}
+        cardHeight={isMobile ? 240 : content.ubicacionCards[0].cardHeight}
+        rotation={isMobile ? 0 : content.ubicacionCards[0].rotation}
+        isCentered={isMobile}
       />
       <HBoton
-        className="absolute top-670 left-15/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-btn-1' : 'top-670 left-15/20'}`}
         text={content.ubicacionCards[0].buttonText}
         href={content.ubicacionCards[0].buttonHref}
         z={3}
+        isMobileNav={isMobile}
       />
 
       <UbicacionCard
-        className="absolute top-800 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-2' : 'top-800 left-5/20'}`}
         z={2}
         text={content.ubicacionCards[1].text}
-        cardWidth={content.ubicacionCards[1].cardWidth}
-        cardHeight={content.ubicacionCards[1].cardHeight}
-        rotation={content.ubicacionCards[1].rotation}
+        cardWidth={isMobile ? 320 : content.ubicacionCards[1].cardWidth}
+        cardHeight={isMobile ? 240 : content.ubicacionCards[1].cardHeight}
+        rotation={isMobile ? 0 : content.ubicacionCards[1].rotation}
+        isCentered={isMobile}
       />
       <HBoton
-        className="absolute top-870 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-btn-2' : 'top-870 left-5/20'}`}
         text={content.ubicacionCards[1].buttonText}
         href={content.ubicacionCards[1].buttonHref}
         z={3}
+        isMobileNav={isMobile}
       />
 
       <UbicacionCard
-        className="absolute top-1000 left-15/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-3' : 'top-1000 left-15/20'}`}
         z={2}
         text={content.ubicacionCards[2].text}
-        cardWidth={content.ubicacionCards[2].cardWidth}
-        cardHeight={content.ubicacionCards[2].cardHeight}
-        rotation={content.ubicacionCards[2].rotation}
+        cardWidth={isMobile ? 320 : content.ubicacionCards[2].cardWidth}
+        cardHeight={isMobile ? 240 : content.ubicacionCards[2].cardHeight}
+        rotation={isMobile ? 0 : content.ubicacionCards[2].rotation}
+        isCentered={isMobile}
       />
       <HBoton
-        className="absolute top-1070 left-15/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-btn-3' : 'top-1070 left-15/20'}`}
         text={content.ubicacionCards[2].buttonText}
         href={content.ubicacionCards[2].buttonHref}
         z={3}
+        isMobileNav={isMobile}
       />
 
       <UbicacionCard
-        className="absolute top-1200 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-4' : 'top-1200 left-5/20'}`}
         z={2}
         text={content.ubicacionCards[3].text}
-        cardWidth={content.ubicacionCards[3].cardWidth}
-        cardHeight={content.ubicacionCards[3].cardHeight}
-        rotation={content.ubicacionCards[3].rotation}
+        cardWidth={isMobile ? 320 : content.ubicacionCards[3].cardWidth}
+        cardHeight={isMobile ? 240 : content.ubicacionCards[3].cardHeight}
+        rotation={isMobile ? 0 : content.ubicacionCards[3].rotation}
+        isCentered={isMobile}
       />
       <HBoton
-        className="absolute top-1270 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-ubicacion-btn-4' : 'top-1270 left-5/20'}`}
         text={content.ubicacionCards[3].buttonText}
         href={content.ubicacionCards[3].buttonHref}
         z={3}
+        isMobileNav={isMobile}
       />
 
       {/* Seccion Con Pin */}
       <SeccionConPin
-        className="absolute top-1500 left-0"
+        className={`absolute left-0 ${isMobile ? 'mobile-seccion-pin' : 'top-1500'}`}
         z={1}
-        height="200vh"
+        height={isMobile ? '150vh' : '200vh'}
       />
 
       {/* Seccion Con Pin Title */}
       <Titulo
-        className="absolute top-1550 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-seccion-title' : 'top-1550 left-5/20'}`}
         z={2}
         line1={content.seccionConPin.title.line1}
         line2={content.seccionConPin.title.line2}
@@ -916,26 +1032,26 @@ function App() {
 
       {/* Seccion Con Pin Text Blocks */}
       <TextoConTitulo
-        className="absolute top-1650 left-5/20"
+        className={`absolute ${isMobile ? 'mobile-seccion-text-1' : 'top-1650 left-5/20'}`}
         z={2}
         title={content.seccionConPin.textBlocks[0].title}
         description={content.seccionConPin.textBlocks[0].description}
-        maxWidth={content.seccionConPin.textBlocks[0].maxWidth}
-        fontSize={content.seccionConPin.textBlocks[0].fontSize}
+        maxWidth={isMobile ? window.innerWidth * 0.9 : content.seccionConPin.textBlocks[0].maxWidth}
+        fontSize={isMobile ? '1.5rem' : content.seccionConPin.textBlocks[0].fontSize}
         textAlign={content.seccionConPin.textBlocks[0].textAlign}
       />
       <TextoConTitulo
-        className="absolute top-1650 left-10/20"
+        className={`absolute ${isMobile ? 'mobile-seccion-text-2' : 'top-1650 left-10/20'}`}
         z={2}
         title={content.seccionConPin.textBlocks[1].title}
         description={content.seccionConPin.textBlocks[1].description}
-        maxWidth={content.seccionConPin.textBlocks[1].maxWidth}
-        fontSize={content.seccionConPin.textBlocks[1].fontSize}
+        maxWidth={isMobile ? window.innerWidth * 0.9 : content.seccionConPin.textBlocks[1].maxWidth}
+        fontSize={isMobile ? '1.5rem' : content.seccionConPin.textBlocks[1].fontSize}
         textAlign={content.seccionConPin.textBlocks[1].textAlign}
       />
 
       {/* Footer */}
-      <h1 className="text-white text-left absolute top-1800 left-6/20 leading-[0.8] z-10">
+      <h1 className={`text-white absolute leading-[0.8] z-10 ${isMobile ? 'mobile-footer' : 'text-left top-1800 left-6/20'}`}>
         <span className="font-vegan">{content.footer.text}</span>
         <span className="font-roboto italic">{content.footer.text2}</span><br></br>
       </h1>
