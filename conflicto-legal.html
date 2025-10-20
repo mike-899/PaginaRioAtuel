@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conflicto Legal - Río Atuel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid #8e2de2;
+            padding-left: 15px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #8e2de2;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .law-box {
+            background: linear-gradient(135deg, #8e2de215 0%, #4a00e015 100%);
+            border: 2px solid #8e2de2;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+        }
+        
+        .court-decision {
+            background: white;
+            border-left: 5px solid #8e2de2;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        
+        .court-decision h4 {
+            color: #8e2de2;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .arguments-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .argument-card {
+            background: white;
+            border: 2px solid #8e2de2;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .argument-card h4 {
+            color: #8e2de2;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .internal-nav {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .internal-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .internal-nav a {
+            display: inline-block;
+            color: #8e2de2;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border: 1px solid #8e2de2;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .internal-nav a:hover {
+            background: #8e2de2;
+            color: white;
+        }
+        
+        .timeline-legal {
+            border-left: 3px solid #8e2de2;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.4rem;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: #8e2de2;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        
+        .timeline-year {
+            color: #8e2de2;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .arguments-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚖️ Conflicto Legal y Judicial</h1>
+            <p class="subtitle">La Batalla por el Agua en los Tribunales</p>
+        </header>
+        
+        <nav>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">🏠 Inicio</a>
+                <a href="historia.html" class="nav-button">📜 Historia</a>
+                <a href="impacto-ambiental.html" class="nav-button">🌿 Impacto Ambiental</a>
+                <a href="conflicto-legal.html" class="nav-button">⚖️ Conflicto Legal</a>
+                <a href="actores.html" class="nav-button">👥 Actores Sociales</a>
+                <a href="soluciones.html" class="nav-button">💡 Soluciones</a>
+            </div>
+        </nav>
+        
+        <div class="content">
+            <div class="internal-nav">
+                <h3>Navegación en esta Página</h3>
+                <a href="#marco-legal">Marco Legal</a>
+                <a href="#judicializacion">Judicialización</a>
+                <a href="#argumentos">Argumentos</a>
+                <a href="#fallos">Fallos de la CSJN</a>
+                <a href="#internacional">Dimensión Internacional</a>
+                <a href="#comites">Comités de Cuenca</a>
+            </div>
+            
+            <section id="intro" class="section">
+                <h2>El Conflicto en el Marco del Derecho</h2>
+                <p>El conflicto del Atuel se inscribe en el marco del derecho interprovincial del agua en Argentina, un área compleja del federalismo que regula el uso de recursos naturales compartidos entre provincias. Este conflicto pone a prueba la capacidad del sistema judicial argentino para mediar entre intereses contrapuestos y garantizar derechos constitucionales.</p>
+                
+                <div class="law-box">
+                    <strong>📜 Principio Fundamental:</strong>
+                    <p>Las provincias tienen dominio originario sobre los recursos naturales en su jurisdicción (Artículo 124, Constitución Nacional), pero cuando un recurso cruza fronteras interprovinciales, la intervención del Estado Nacional y la Corte Suprema de Justicia de la Nación es necesaria para arbitrar y garantizar derechos.</p>
+                </div>
+            </section>
+            
+            <section id="marco-legal" class="section">
+                <h2>Marco Legal Aplicable</h2>
+                
+                <h3>Constitución Nacional</h3>
+                <div class="law-box">
+                    <h4>Artículo 41 - Derecho al Ambiente Sano</h4>
+                    <p><em>"Todos los habitantes gozan del derecho a un ambiente sano, equilibrado, apto para el desarrollo humano y para que las actividades productivas satisfagan las necesidades presentes sin comprometer las de las generaciones futuras; y tienen el deber de preservarlo."</em></p>
+                    <p style="margin-top: 1rem;"><strong>Implicación:</strong> Este artículo ha sido invocado por La Pampa en sus demandas judiciales, argumentando que la apropiación del Atuel vulnera el derecho constitucional a un ambiente sano.</p>
+                </div>
+                
+                <div class="law-box">
+                    <h4>Artículo 124 - Dominio Provincial de Recursos Naturales</h4>
+                    <p><em>"Corresponde a las provincias el dominio originario de los recursos naturales existentes en su territorio."</em></p>
+                    <p style="margin-top: 1rem;"><strong>Tensión jurídica:</strong> Mendoza invoca este artículo para justificar su aprovechamiento del río, mientras que La Pampa argumenta que el Atuel es un recurso interprovincial que requiere gestión compartida.</p>
+                </div>
+                
+                <h3>Ley General del Ambiente (25.675)</h3>
+                <div class="highlight-box">
+                    <p>Esta ley impone principios fundamentales que han sido invocados en el conflicto:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Principio de prevención:</strong> Obligación de prevenir daños ambientales</li>
+                        <li><strong>Principio precautorio:</strong> Ante duda sobre daños, debe prevalecer la protección ambiental</li>
+                        <li><strong>Principio de recomposición:</strong> <em>Obligación de recomponer el daño ambiental causado</em></li>
+                        <li><strong>Principio de equidad intergeneracional:</strong> Garantizar recursos para generaciones futuras</li>
+                    </ul>
+                </div>
+                
+                <h3>Derecho Interprovincial del Agua</h3>
+                <p>El derecho interprovincial del agua en Argentina se rige por:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li><strong>Código Civil y Comercial:</strong> Regula derechos sobre aguas y usos</li>
+                    <li><strong>Leyes provinciales de agua:</strong> Cada provincia tiene su propio régimen hídrico</li>
+                    <li><strong>Jurisprudencia de la CSJN:</strong> Los fallos de la Corte Suprema crean precedentes vinculantes</li>
+                    <li><strong>Tratados interprovinciales:</strong> Acuerdos bilaterales o multilaterales entre provincias</li>
+                </ul>
+            </section>
+            
+            <section id="judicializacion" class="section">
+                <h2>Judicialización del Conflicto</h2>
+                
+                <p>La judicialización comenzó formalmente en 1978, cuando La Pampa presentó su primera demanda ante la Corte Suprema de Justicia de la Nación. Desde entonces, el conflicto ha atravesado múltiples etapas judiciales, con fallos, incumplimientos y nuevas demandas.</p>
+                
+                <div class="timeline-legal">
+                    <div class="timeline-item">
+                        <div class="timeline-year">1978</div>
+                        <p><strong>Primera demanda de La Pampa ante la CSJN</strong></p>
+                        <p>La Pampa inicia acciones judiciales reclamando un caudal mínimo del río Atuel. La Corte reconoce el derecho de La Pampa a recibir caudal, pero los fallos iniciales no son cumplidos inmediatamente por Mendoza.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">Décadas 1980-2000</div>
+                        <p><strong>Períodos de negociaciones y estudios técnicos</strong></p>
+                        <p>Se alternan intentos de negociación bilateral, estudios hidrológicos, y presentaciones judiciales. La implementación efectiva de los fallos se demora por diferencias técnicas y políticas.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2017</div>
+                        <p><strong>Sentencia de Recomposición Ambiental</strong></p>
+                        <p>La CSJN dicta una sentencia histórica ordenando a ambas provincias acordar un caudal hídrico que permita recomponer los ecosistemas pampeanos. Establece que debe respetarse el artículo 41 de la Constitución y la Ley General del Ambiente.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <p><strong>Fijación de Caudal Mínimo Interino</strong></p>
+                        <p>Ante el incumplimiento de la sentencia de 2017, la CSJN reitera la obligación de fijar un caudal razonable y establece un mínimo interino de 3,2 m³/s. Invoca expresamente el mandato constitucional de recomponer el daño ambiental.</p>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025</div>
+                        <p><strong>Situación Actual</strong></p>
+                        <p>El conflicto persiste con desafíos en la implementación plena de los fallos. Las provincias continúan en negociaciones técnicas y políticas bajo supervisión de la CSJN.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="argumentos" class="section">
+                <h2>Argumentos de las Provincias</h2>
+                
+                <p>Ambas provincias recurren a argumentos legales, técnicos, históricos y económicos para sustentar sus posiciones. La tensión entre estos argumentos refleja la complejidad del conflicto y la dificultad de encontrar soluciones que satisfagan a ambas partes.</p>
+                
+                <div class="arguments-grid">
+                    <div class="argument-card">
+                        <h4>🍇 Argumentos de Mendoza</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                            <li><strong>Derecho histórico:</strong> Aprovechamiento del recurso desde hace más de un siglo para riego, producción y generación hidroeléctrica</li>
+                            <li><strong>Disponibilidad limitada:</strong> El caudal del río no siempre es suficiente para satisfacer la demanda de ambas provincias</li>
+                            <li><strong>Cambio climático:</strong> Reducción de precipitaciones y retroceso de glaciares han disminuido los caudales cordilleranos</li>
+                            <li><strong>Necesidad de obras:</strong> Se requieren inversiones significativas en trasvases y obras de conducción para liberar caudales hacia La Pampa</li>
+                            <li><strong>Impacto económico:</strong> Liberar grandes caudales afectaría la producción agrícola y la generación eléctrica mendocina</li>
+                            <li><strong>Dominio provincial:</strong> Invoca el artículo 124 de la Constitución sobre dominio provincial de recursos naturales</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="argument-card">
+                        <h4>🌾 Argumentos de La Pampa</h4>
+                        <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                            <li><strong>Río interprovincial:</strong> El Atuel es un recurso que cruza fronteras provinciales y debe gestionarse de forma compartida</li>
+                            <li><strong>Derecho constitucional:</strong> Invoca el artículo 41 sobre derecho a un ambiente sano y equilibrado</li>
+                            <li><strong>Recomposición obligatoria:</strong> La Ley General del Ambiente impone la obligación de recomponer daños ambientales</li>
+                            <li><strong>Daño ambiental comprobado:</strong> Presenta evidencia científica de desaparición de humedales, lagunas y degradación ecosistémica</li>
+                            <li><strong>Derechos de comunidades:</strong> Comunidades locales y pueblos originarios tienen derecho a acceso al agua y ambiente sano</li>
+                            <li><strong>Caudales mínimos:</strong> Reclama caudales que permitan recuperar funciones ecosistémicas básicas, no necesariamente el caudal histórico completo</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="fallos" class="section">
+                <h2>Fallos Clave de la CSJN</h2>
+                
+                <div class="court-decision">
+                    <h4>Sentencia 2017: Recomposición Ambiental</h4>
+                    <p><strong>Contenido principal:</strong> La CSJN ordenó a Mendoza y La Pampa acordar un caudal hídrico del río Atuel que permitiera recomponer los ecosistemas pampeanos afectados por décadas de falta de agua.</p>
+                    <p><strong>Fundamentos:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Reconocimiento del daño ambiental causado a La Pampa</li>
+                        <li>Obligación constitucional de garantizar un ambiente sano (art. 41 CN)</li>
+                        <li>Mandato de recomposición según Ley General del Ambiente</li>
+                        <li>Necesidad de gestión integrada de cuencas interprovinciales</li>
+                    </ul>
+                    <p><strong>Resultado:</strong> Las provincias debían acordar técnica y políticamente el caudal y las obras necesarias. El acuerdo no se materializó plenamente, llevando a nuevas intervenciones judiciales.</p>
+                </div>
+                
+                <div class="court-decision">
+                    <h4>Resolución 2020: Caudal Mínimo Interino de 3,2 m³/s</h4>
+                    <p><strong>Contenido principal:</strong> Ante el incumplimiento de la sentencia de 2017, la CSJN reiteró la obligación de fijar un caudal razonable y estableció un mínimo interino de 3,2 metros cúbicos por segundo.</p>
+                    <p><strong>Fundamentos:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Incumplimiento de la sentencia anterior</li>
+                        <li>Necesidad de garantizar caudal mínimo mientras se acuerda solución definitiva</li>
+                        <li>Invocación expresa del principio de recomposición ambiental</li>
+                        <li>Consideración de estudios técnicos sobre caudales ecológicos mínimos</li>
+                    </ul>
+                    <p><strong>Impacto:</strong> Este fallo establece un piso mínimo de caudal que Mendoza debe liberar hacia La Pampa. Sin embargo, la implementación plena y el monitoreo continúan siendo desafíos.</p>
+                </div>
+                
+                <div class="highlight-box">
+                    <strong>Significado Jurídico de los Fallos:</strong>
+                    <p>Los fallos de la CSJN son vinculantes y de cumplimiento obligatorio para ambas provincias. Sin embargo, su implementación práctica requiere coordinación técnica, política y financiera, lo que ha generado demoras y tensiones persistentes.</p>
+                </div>
+            </section>
+            
+            <section id="internacional" class="section">
+                <h2>Dimensión Internacional del Conflicto</h2>
+                
+                <p>La Pampa ha llevado el conflicto más allá de los tribunales nacionales, buscando presión y visibilización en foros internacionales.</p>
+                
+                <h3>Tribunal Latinoamericano del Agua</h3>
+                <div class="highlight-box">
+                    <p>La Pampa presentó el caso ante el Tribunal Latinoamericano del Agua, denunciando violaciones de derechos humanos y ambientales. Este tribunal, aunque no tiene poder vinculante, emite recomendaciones que generan presión moral y política.</p>
+                    <p style="margin-top: 1rem;"><strong>Denuncias presentadas:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Violación del derecho humano al agua</li>
+                        <li>Vulneración de derechos de comunidades rurales e indígenas</li>
+                        <li>Daño ambiental transfronterizo sin compensación</li>
+                        <li>Falta de gestión compartida de recursos hídricos</li>
+                    </ul>
+                </div>
+                
+                <h3>Foros Internacionales</h3>
+                <p>El conflicto ha sido expuesto en diversos foros internacionales sobre derechos humanos, gestión del agua y justicia ambiental. Esta estrategia busca:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Visibilizar internacionalmente el conflicto</li>
+                    <li>Generar presión diplomática sobre el Estado argentino</li>
+                    <li>Obtener recomendaciones de organismos internacionales</li>
+                    <li>Comparar con casos similares de gestión de cuencas compartidas</li>
+                </ul>
+                
+                <h3>Comparación con Casos Internacionales</h3>
+                <p>El conflicto del Atuel presenta similitudes con casos de cuencas transfronterizas internacionales, como el río Colorado (Estados Unidos-México), el Mekong (sudeste asiático) y el Danubio (Europa). Estos casos ilustran la eficacia de:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Comités binacionales o multinacionales de gestión</li>
+                    <li>Intercambio transparente de información hidrológica</li>
+                    <li>Fondos compartidos de mitigación y restauración</li>
+                    <li>Programas de restauración con financiamiento conjunto</li>
+                </ul>
+            </section>
+            
+            <section id="comites" class="section">
+                <h2>Comités de Cuenca y Gestión Compartida</h2>
+                
+                <p>Se han establecido comités de cuenca para promover el diálogo, la planificación conjunta y la gestión técnica del conflicto. Sin embargo, la diferencia de intereses ha mantenido el conflicto abierto.</p>
+                
+                <h3>Objetivos de los Comités</h3>
+                <div class="highlight-box">
+                    <ul style="margin-left: 2rem;">
+                        <li><strong>Diálogo interprovincial:</strong> Espacio de negociación permanente entre autoridades provinciales</li>
+                        <li><strong>Monitoreo técnico:</strong> Seguimiento de caudales, calidad de agua y estado de ecosistemas</li>
+                        <li><strong>Planificación de obras:</strong> Diseño conjunto de infraestructura necesaria</li>
+                        <li><strong>Resolución de conflictos:</strong> Mediación antes de recurrir a instancias judiciales</li>
+                    </ul>
+                </div>
+                
+                <h3>Desafíos de los Comités</h3>
+                <p>A pesar de su existencia, los comités enfrentan obstáculos significativos:</p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>Intereses contrapuestos: Mendoza prioriza riego e hidroelectricidad; La Pampa reclama caudales ecológicos</li>
+                    <li>Diferencias técnicas sobre caudales necesarios y disponibles</li>
+                    <li>Falta de financiamiento para obras de infraestructura</li>
+                    <li>Cambios de autoridades provinciales que afectan la continuidad</li>
+                    <li>Complejidad del cambio climático que afecta disponibilidad hídrica</li>
+                </ul>
+                
+                <h3>Necesidad de Fortalecimiento Institucional</h3>
+                <div class="law-box">
+                    <p>La experiencia del Atuel sugiere que se requieren marcos institucionales interjurisdiccionales más robustos, con:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Autoridades con capacidad de decisión vinculante</li>
+                        <li>Financiamiento permanente del Estado nacional</li>
+                        <li>Participación de comunidades afectadas y expertos independientes</li>
+                        <li>Mecanismos de cumplimiento y sanciones por incumplimiento</li>
+                        <li>Transparencia en información hidrológica y decisiones</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <div class="law-box" style="margin-top: 3rem;">
+                <h3 style="color: #8e2de2;">⚖️ Un Conflicto que Desafía al Federalismo</h3>
+                <p>El conflicto del Atuel pone a prueba la capacidad del federalismo argentino para gestionar recursos compartidos. Más allá de las sentencias judiciales, se requiere voluntad política, coordinación técnica y financiamiento para alcanzar soluciones justas y sostenibles que respeten tanto los derechos ambientales como las necesidades productivas de ambas provincias.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 - Río Atuel: Conflicto Hídrico Interprovincial</p>
+            <p>Información basada en fuentes históricas, jurídicas y ambientales</p>
+        </footer>
+    </div>
+</body>
+</html>

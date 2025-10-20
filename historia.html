@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia del Conflicto - Río Atuel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+            margin: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+            padding-left: calc(50% + 40px);
+        }
+        
+        .timeline-item:nth-child(even) {
+            padding-left: 0;
+            padding-right: calc(50% + 40px);
+            text-align: right;
+        }
+        
+        .timeline-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border: 4px solid white;
+            border-radius: 50%;
+            box-shadow: 0 0 0 4px #667eea50;
+        }
+        
+        .timeline-content {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .internal-nav {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .internal-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .internal-nav a {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border: 1px solid #667eea;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .internal-nav a:hover {
+            background: #667eea;
+            color: white;
+        }
+        
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .comparison-card {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .comparison-card h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item, .timeline-item:nth-child(even) {
+                padding-left: 40px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline::before {
+                left: 10px;
+            }
+            
+            .timeline-marker {
+                left: 10px;
+            }
+            
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📜 Historia del Conflicto</h1>
+            <p class="subtitle">Más de un Siglo de Disputas por el Agua</p>
+        </header>
+        
+        <nav>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">🏠 Inicio</a>
+                <a href="historia.html" class="nav-button">📜 Historia</a>
+                <a href="impacto-ambiental.html" class="nav-button">🌿 Impacto Ambiental</a>
+                <a href="conflicto-legal.html" class="nav-button">⚖️ Conflicto Legal</a>
+                <a href="actores.html" class="nav-button">👥 Actores Sociales</a>
+                <a href="soluciones.html" class="nav-button">💡 Soluciones</a>
+            </div>
+        </nav>
+        
+        <div class="content">
+            <div class="internal-nav">
+                <h3>Navegación en esta Página</h3>
+                <a href="#origenes">Orígenes</a>
+                <a href="#siglo20">Siglo XX</a>
+                <a href="#provincializacion">Provincialización</a>
+                <a href="#los-nihuiles">Los Nihuiles</a>
+                <a href="#consecuencias">Consecuencias</a>
+            </div>
+            
+            <section id="origenes" class="section">
+                <h2>Orígenes del Conflicto (Siglo XIX - Principios del XX)</h2>
+                <p>Desde fines del siglo XIX y principios del XX, el río Atuel ha sido objeto de una disputa profunda entre Mendoza y La Pampa, que condensa tensiones históricas, jurídicas, ambientales, sociales y culturales.</p>
+                
+                <div class="highlight-box">
+                    <h3>El Río en su Estado Original</h3>
+                    <p>Originalmente, el río Atuel fluía con un caudal suficiente para sostener simultáneamente dos realidades complementarias:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>En La Pampa:</strong> Humedales, lagunas, biodiversidad y actividades agropecuarias en el oeste pampeano</li>
+                        <li><strong>En Mendoza:</strong> Desarrollo de oasis frutícolas y vinícolas, especialmente en San Rafael y General Alvear</li>
+                    </ul>
+                </div>
+                
+                <h3>Primeras Obras de Aprovechamiento</h3>
+                <p>A comienzos del siglo XX comenzaron las primeras obras de riego y construcción de embalses en territorio mendocino. Estas obras iniciales marcaron el comienzo de la apropiación sistemática de caudales del río Atuel, sentando las bases para el conflicto que se profundizaría con el paso de las décadas.</p>
+                
+                <p>Los productores mendocinos comenzaron a ver en el Atuel una fuente esencial para transformar tierras áridas en oasis productivos. La construcción de canales de riego permitió la expansión de viñedos y frutales, consolidando la vocación agrícola de la región cuyana.</p>
+            </section>
+            
+            <section id="siglo20" class="section">
+                <h2>El Siglo XX: Transformación Radical</h2>
+                <p>A lo largo del siglo XX, las obras hidráulicas construidas en Mendoza modificaron profundamente el curso natural del río. Este proceso de transformación fue gradual pero implacable, alcanzando su punto culminante con la construcción del complejo Los Nihuiles.</p>
+                
+                <div class="comparison-box">
+                    <div class="comparison-card">
+                        <h4>Desarrollo en Mendoza</h4>
+                        <p><strong>Beneficios obtenidos:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Consolidación de la producción agrícola bajo riego</li>
+                            <li>Desarrollo de la matriz energética hidroeléctrica</li>
+                            <li>Expansión de los oasis productivos de San Rafael y General Alvear</li>
+                            <li>Crecimiento económico sostenido de la región cuyana</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="comparison-card" style="border-left-color: #e74c3c;">
+                        <h4>Impactos en La Pampa</h4>
+                        <p><strong>Efectos negativos:</strong></p>
+                        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                            <li>Reducción drástica del caudal recibido</li>
+                            <li>Desaparición progresiva de humedales y lagunas</li>
+                            <li>Salinización de suelos productivos</li>
+                            <li>Pérdida de biodiversidad y servicios ecosistémicos</li>
+                            <li>Migración forzada de comunidades rurales</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="los-nihuiles" class="section">
+                <h2>El Complejo Los Nihuiles: Punto de Inflexión (1947-1948)</h2>
+                <p>La construcción del complejo hidroeléctrico y de riego Los Nihuiles entre 1947 y 1948 marcó el punto de inflexión definitivo en el conflicto. Esta obra de ingeniería, considerada estratégica para el desarrollo nacional en la época peronista, modificó profundamente el curso natural del río.</p>
+                
+                <div class="highlight-box">
+                    <h3>Características del Complejo</h3>
+                    <p>El complejo Los Nihuiles consistió en:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Sistema de embalses:</strong> Retención y regulación del caudal del río</li>
+                        <li><strong>Centrales hidroeléctricas:</strong> Generación de energía para la región cuyana</li>
+                        <li><strong>Red de canales:</strong> Distribución de agua para riego agrícola</li>
+                        <li><strong>Infraestructura de control:</strong> Compuertas y sistemas de derivación</li>
+                    </ul>
+                </div>
+                
+                <h3>Consecuencias Inmediatas</h3>
+                <p>La puesta en funcionamiento de Los Nihuiles produjo una reducción drástica e inmediata del caudal que llegaba a La Pampa. El río que antes fluía naturalmente hacia el oeste pampeano fue retenido, regulado y aprovechado casi en su totalidad por Mendoza.</p>
+                
+                <p>Esta transformación se realizó sin consulta previa a las autoridades o comunidades pampeanas, que en ese momento aún formaban parte del Territorio Nacional de La Pampa, sin el estatus de provincia y, por lo tanto, sin capacidad plena de reclamo institucional.</p>
+            </section>
+            
+            <section id="provincializacion" class="section">
+                <h2>Provincialización de La Pampa (1951)</h2>
+                <p>En 1951, el Territorio Nacional de La Pampa alcanzó el estatus de provincia, lo que le otorgó capacidad institucional y legal para reclamar formalmente sus derechos sobre el río Atuel ante el Estado nacional.</p>
+                
+                <div class="highlight-box">
+                    <strong>Significado Institucional:</strong>
+                    <p>La provincialización marcó el inicio de una nueva etapa en el conflicto. La Pampa, ahora con representación legislativa y capacidad de accionar judicialmente, comenzó un reclamo permanente que se mantiene hasta hoy.</p>
+                </div>
+                
+                <p>Desde ese momento, las autoridades pampeanas iniciaron gestiones diplomáticas, técnicas y políticas para intentar revertir la situación. El conflicto dejó de ser una cuestión meramente fáctica para convertirse en una disputa jurídica e institucional de alcance federal.</p>
+            </section>
+            
+            <section id="consecuencias" class="section">
+                <h2>Consecuencias Históricas de la Apropiación</h2>
+                
+                <h3>Transformación Ambiental</h3>
+                <p>La apropiación del caudal del Atuel produjo efectos ambientales severos y en gran medida irreversibles en el oeste pampeano:</p>
+                
+                <div class="highlight-box">
+                    <ul style="margin-left: 2rem;">
+                        <li><strong>Desaparición de humedales y lagunas:</strong> Ecosistemas enteros dejaron de existir, eliminando hábitats únicos</li>
+                        <li><strong>Salinización de suelos:</strong> Tierras que antes eran productivas se volvieron estériles</li>
+                        <li><strong>Pérdida de biodiversidad:</strong> Especies vegetales y animales endémicas desaparecieron de la región</li>
+                        <li><strong>Descenso de napas freáticas:</strong> Los acuíferos subterráneos se empobrecieron</li>
+                        <li><strong>Avance de la desertificación:</strong> La ausencia de agua superficial aceleró procesos de degradación del suelo</li>
+                    </ul>
+                </div>
+                
+                <h3>Impacto Socioeconómico</h3>
+                <p>Las consecuencias sociales y económicas fueron igualmente devastadoras para las comunidades del oeste pampeano:</p>
+                
+                <div class="highlight-box">
+                    <ul style="margin-left: 2rem;">
+                        <li><strong>Migración forzada:</strong> Comunidades rurales enteras se vieron obligadas a abandonar sus territorios ancestrales</li>
+                        <li><strong>Colapso de economías locales:</strong> Actividades agropecuarias y ganaderas que dependían del río desaparecieron</li>
+                        <li><strong>Alteración cultural:</strong> Se perdieron modos de vida tradicionales y vínculos culturales con el territorio</li>
+                        <li><strong>Empobrecimiento estructural:</strong> La región quedó en situación de vulnerabilidad económica permanente</li>
+                        <li><strong>Pérdida de servicios ecosistémicos:</strong> Desaparición de actividades turísticas y culturales vinculadas a humedales</li>
+                    </ul>
+                </div>
+                
+                <h3>Externalización del Costo Ambiental</h3>
+                <p>Uno de los aspectos más criticados del modelo de desarrollo implementado en Mendoza es la externalización del costo ambiental hacia La Pampa. Mientras Mendoza consolidaba su producción agrícola bajo riego, su matriz energética hidroeléctrica y el desarrollo de sus oasis productivos, lo hacía a costa del deterioro ambiental y social aguas abajo.</p>
+                
+                <p>Este patrón de desarrollo asimétrico generó un conflicto estructural que trasciende las cuestiones técnicas o jurídicas, para convertirse en un problema de justicia ambiental y equidad federal.</p>
+            </section>
+            
+            <section class="section">
+                <h2>Línea de Tiempo Completa</h2>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Finales del Siglo XIX</div>
+                            <p>Inicio de las tensiones por el aprovechamiento del agua del Atuel. Primeras obras de riego en territorio mendocino.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Principios del Siglo XX</div>
+                            <p>Construcción de las primeras obras de riego y embalses. Comienza la apropiación sistemática de caudales.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">1947-1948</div>
+                            <p>Construcción del complejo hidroeléctrico y de riego Los Nihuiles. Punto de inflexión que reduce drásticamente el caudal a La Pampa.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">1951</div>
+                            <p>Provincialización de La Pampa. Adquiere capacidad institucional para reclamar formalmente sus derechos sobre el río.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">1978</div>
+                            <p>Primera demanda formal de La Pampa ante la Corte Suprema de Justicia de la Nación. Inicio de la judicialización del conflicto.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">Décadas 1980-2000</div>
+                            <p>Negociaciones interprovinciales, estudios técnicos y fallos judiciales que reconocen derechos de La Pampa pero no logran implementación efectiva.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2017</div>
+                            <p>Nueva sentencia de la CSJN ordenando a ambas provincias acordar un caudal que permita recomponer ecosistemas pampeanos.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2020</div>
+                            <p>La CSJN fija un caudal mínimo interino de 3,2 m³/s ante el incumplimiento de acuerdos previos. Invoca el artículo 41 de la Constitución Nacional.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-date">2025</div>
+                            <p>El conflicto permanece vigente. Tensiones políticas, técnicas y jurídicas continúan. El cambio climático agrega complejidad al desafío.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="highlight-box" style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-left: 4px solid #764ba2; margin-top: 3rem;">
+                <h3 style="color: #764ba2;">Una Historia de Más de 100 Años</h3>
+                <p>El conflicto del Atuel es uno de los más antiguos y complejos de Argentina. Su resolución requiere comprender no solo los aspectos técnicos e hidrológicos, sino también la profunda historia de asimetrías, decisiones políticas y consecuencias ambientales y sociales que se han acumulado durante más de un siglo.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 - Río Atuel: Conflicto Hídrico Interprovincial</p>
+            <p>Información basada en fuentes históricas, jurídicas y ambientales</p>
+        </footer>
+    </div>
+</body>
+</html>
