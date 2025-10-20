@@ -21,7 +21,7 @@
 
 @font-face {
   font-family: 'Vegan';
-  src: url('/fonts/VeganStylePersonalUse-5Y58.ttf') format('truetype');
+  src: url('/RioAtuel/fonts/VeganStylePersonalUse-5Y58.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -29,7 +29,7 @@
 
 @font-face {
   font-family: 'Circular';
-  src: url('/fonts/FontsFree-Net-CircularStd-Bold-5Y58.ttf') format('truetype');
+  src: url('/RioAtuel/fonts/FontsFree-Net-CircularStd-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -285,15 +285,15 @@ body {
   }
 
   .mobile-image-stack:nth-of-type(6) { /* First image */
-    transform: translate(-5px, -10px);
+    transform: translate(-5px, -10px) rotate(-10deg) !important;
   }
 
   .mobile-image-stack:nth-of-type(7) { /* Second image */
-    transform: translate(0px, 0px);
+    transform: translate(0px, 0px) rotate(0deg) !important;
   }
 
   .mobile-image-stack:nth-of-type(8) { /* Third image */
-    transform: translate(5px, 10px);
+    transform: translate(5px, 10px) rotate(15deg) !important;
   }
 
   /* Text blocks for mobile */
@@ -458,7 +458,15 @@ body {
   }
 
   /* Smaller images for very small screens */
-  .mobile-image-stack {
-    transform: scale(0.85) !important;
+  .mobile-image-stack:nth-of-type(6) { /* First image */
+    transform: translate(-5px, -10px) rotate(-10deg) scale(0.85) !important;
+  }
+
+  .mobile-image-stack:nth-of-type(7) { /* Second image */
+    transform: translate(0px, 0px) rotate(0deg) scale(0.85) !important;
+  }
+
+  .mobile-image-stack:nth-of-type(8) { /* Third image */
+    transform: translate(5px, 10px) rotate(15deg) scale(0.85) !important;
   }
 }

@@ -11,34 +11,34 @@
     "mainButtons": [
       {
         "text": "Historia",
-        "href": "/historia.html",
+        "href": "/RioAtuel/historia.html",
         "position": "left-2/6"
       },
       {
         "text": "Impacto",
-        "href": "/impacto-ambiental.html",
+        "href": "/RioAtuel/impacto-ambiental.html",
         "position": "left-3/6"
       },
       {
         "text": "Legal",
-        "href": "/conflicto-legal.html",
+        "href": "/RioAtuel/conflicto-legal.html",
         "position": "left-4/6"
       }
     ],
     "smallButtons": [
       {
         "text": "🏠",
-        "href": "/",
+        "href": "/RioAtuel/",
         "position": "left-15"
       },
       {
         "text": "👥",
-        "href": "#actores",
+        "href": "/RioAtuel/actores.html",
         "position": "left-35"
       },
       {
         "text": "💡",
-        "href": "/soluciones.html",
+        "href": "/RioAtuel/soluciones.html",
         "position": "left-55"
       }
     ],
@@ -108,7 +108,7 @@
       "cardHeight": 250,
       "rotation": 5,
       "buttonText": "Ver más",
-      "buttonHref": "/historia.html#los-nihuiles"
+      "buttonHref": "/RioAtuel/historia.html#los-nihuiles"
     },
     {
       "text": "1978\nPrimera demanda\nante la CSJN",
@@ -116,7 +116,7 @@
       "cardHeight": 250,
       "rotation": -15,
       "buttonText": "Ver más",
-      "buttonHref": "/conflicto-legal.html#judicializacion"
+      "buttonHref": "/RioAtuel/conflicto-legal.html#judicializacion"
     },
     {
       "text": "2017\nSentencia de\nRecomposición",
@@ -124,7 +124,7 @@
       "cardHeight": 250,
       "rotation": 10,
       "buttonText": "Ver más",
-      "buttonHref": "/conflicto-legal.html#fallos"
+      "buttonHref": "/RioAtuel/conflicto-legal.html#fallos"
     },
     {
       "text": "2020\nCaudal mínimo\n3,2 m³/s",
@@ -132,7 +132,7 @@
       "cardHeight": 250,
       "rotation": -5,
       "buttonText": "Ver más",
-      "buttonHref": "/conflicto-legal.html#fallos"
+      "buttonHref": "/RioAtuel/conflicto-legal.html#fallos"
     }
   ],
   "seccionConPin": {

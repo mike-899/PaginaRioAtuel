@@ -4,8 +4,7 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  // IMPORTANTE: Cambia 'PaginaRioAtuel' por el nombre de tu repositorio de GitHub
-  base: '/PaginaRioAtuel/',
+  base: '/RioAtuel/',
   plugins: [
     react({
       babel: {
@@ -14,4 +13,7 @@ export default defineConfig({
     }),
     tailwindcss()
   ],
+  server: {
+    allowedHosts: ['sh.gaelcloud.org']
+  }
 })

@@ -2,6 +2,13 @@ import { useState, useEffect } from 'react'
 import './App.css'
 import content from './content.json'
 
+// Helper function to get asset path with correct base URL
+const getAssetPath = (path) => {
+  // Remove leading slash if present
+  const cleanPath = path.startsWith('/') ? path.slice(1) : path
+  return `${import.meta.env.BASE_URL}${cleanPath}`
+}
+
 function HBoton({ text = "Lorem", className = "", href = "#", z = 0, isMobileNav = false}) {
   const radius = 30;
   const rectWidth = 150;
@@ -42,7 +49,7 @@ function HBoton({ text = "Lorem", className = "", href = "#", z = 0, isMobileNav
 
         {/* Arrow icon in the left circle */}
         <image
-          href="/assets/up-right-arrow.svg"
+          href={getAssetPath("/assets/up-right-arrow.svg")}
           x={radius - 12}
           y={radius - 12}
           width={24}
@@ -70,7 +77,7 @@ function HBoton({ text = "Lorem", className = "", href = "#", z = 0, isMobileNav
 
         {/* Arrow icon in the right circle */}
         <image
-          href="/assets/up-right-arrow.svg"
+          href={getAssetPath("/assets/up-right-arrow.svg")}
           x={totalWidth - radius - 12}
           y={radius - 12}
           width={24}
@@ -197,7 +204,7 @@ function Rio({
             height="350"
           >
             <image
-              href="/assets/water-tile.webp"
+              href={getAssetPath("/assets/water-tile.webp")}
               width="350"
               height="350"
             />
@@ -508,7 +515,7 @@ function UbicacionCard({
 
         {/* Location pin - large white version */}
         <image
-          href="/assets/Ubication.svg"
+          href={getAssetPath("/assets/Ubication.svg")}
           x={cardWidth / 2 - (pinSize * pinWhiteScale) / 2}
           y={53}
           width={pinSize * pinWhiteScale}
@@ -518,7 +525,7 @@ function UbicacionCard({
 
         {/* Location pin - normal light-blue version */}
         <image
-          href="/assets/Ubication.svg"
+          href={getAssetPath("/assets/Ubication.svg")}
           x={cardWidth / 2 - pinSize / 2}
           y={(pinSize * pinWhiteScale - pinSize) / 2+50}
           width={pinSize}
@@ -597,7 +604,7 @@ function SeccionConPin({
 
         {/* Location pin - large light-blue version */}
         <image
-          href="/assets/Ubication.svg"
+          href={getAssetPath("/assets/Ubication.svg")}
           x={0}
           y={53}
           width={pinSize * pinWhiteScale}
@@ -607,7 +614,7 @@ function SeccionConPin({
 
         {/* Location pin - normal white version */}
         <image
-          href="/assets/Ubication.svg"
+          href={getAssetPath("/assets/Ubication.svg")}
           x={(pinSize * pinWhiteScale - pinSize) / 2}
           y={(pinSize * pinWhiteScale - pinSize) / 2 + 50}
           width={pinSize}
@@ -710,7 +717,7 @@ function ImagenConBorde({
 
         {/* Image with mask/clip path */}
         <image
-          href={src}
+          href={getAssetPath(src)}
           x={borderWidth / 2}
           y={borderWidth / 2}
           width={width - borderWidth}
@@ -738,7 +745,13 @@ function ImagenConBorde({
 
 function App() {
   const [count, setCount] = useState(0)
-  const [isMobile, setIsMobile] = useState(false)
+  // Initialize isMobile based on window width immediately
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 768
+    }
+    return false
+  })
   const [menuOpen, setMenuOpen] = useState(false)
   const [frontImage, setFrontImage] = useState(2) // Image index that's in front (0, 1, or 2)
 
@@ -747,7 +760,9 @@ function App() {
       setIsMobile(window.innerWidth <= 768)
     }
 
+    // Call checkMobile immediately to ensure we have the correct value
     checkMobile()
+
     window.addEventListener('resize', checkMobile)
     return () => window.removeEventListener('resize', checkMobile)
   }, [])
