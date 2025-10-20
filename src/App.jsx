@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
+import content from './content.json'
 
 function HBoton({ text = "Lorem", className = "", href = "#", z = 0}) {
   const radius = 30;
   const rectWidth = 150;
   const rectHeight = 60;
   const totalWidth = radius * 2 + rectWidth;
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <a
@@ -16,44 +18,101 @@ function HBoton({ text = "Lorem", className = "", href = "#", z = 0}) {
         zIndex: z
       }}
       className={`inline-block ${className}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <svg
         width={totalWidth}
         height={radius * 2}
         className="overflow-visible"
       >
-        {/* Circle on the left */}
+        {/* Circle on the left - shrinks to disappear */}
         <circle
           cx={radius}
           cy={radius}
           r={radius}
           fill="var(--color-teal-dark)"
           fillOpacity="0.43"
+          style={{
+            transform: isHovered ? 'scale(0)' : 'scale(1)',
+            transformOrigin: `${radius}px ${radius}px`,
+            transition: 'transform 0.3s ease-in-out'
+          }}
+        />
+
+        {/* Arrow icon in the left circle */}
+        <image
+          href="/assets/up-right-arrow.svg"
+          x={radius - 12}
+          y={radius - 12}
+          width={24}
+          height={24}
+          style={{
+            transform: isHovered ? 'scale(0)' : 'scale(1)',
+            transformOrigin: `${radius}px ${radius}px`,
+            transition: 'transform 0.3s ease-in-out'
+          }}
+        />
+
+        {/* Circle reappearing on the right - grows from zero */}
+        <circle
+          cx={totalWidth - radius}
+          cy={radius}
+          r={radius}
+          fill="var(--color-teal-dark)"
+          fillOpacity="0.43"
+          style={{
+            transform: isHovered ? 'scale(1)' : 'scale(0)',
+            transformOrigin: `${totalWidth - radius}px ${radius}px`,
+            transition: 'transform 0.3s ease-in-out 0.3s'
+          }}
+        />
+
+        {/* Arrow icon in the right circle */}
+        <image
+          href="/assets/up-right-arrow.svg"
+          x={totalWidth - radius - 12}
+          y={radius - 12}
+          width={24}
+          height={24}
+          style={{
+            transform: isHovered ? 'scale(1)' : 'scale(0)',
+            transformOrigin: `${totalWidth - radius}px ${radius}px`,
+            transition: 'transform 0.3s ease-in-out 0.3s'
+          }}
         />
 
         {/* Rectangle with border radius */}
-        <rect
-          x={radius * 2}
-          y={(radius * 2 - rectHeight) / 2}
-          width={rectWidth}
-          height={rectHeight}
-          rx={30}
-          ry={30}
-          fill="var(--color-teal-dark)"
-          fillOpacity="0.43"
-        />
-
-        {/* Text centered in the rectangle */}
-        <text
-          x={radius * 2 + rectWidth / 2}
-          y={radius}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          className="font-circular font-bold text-3xl"
-          fill="currentColor"
+        <g
+          style={{
+            transform: isHovered ? `translateX(-${radius * 2}px) rotate(-3deg)` : 'translateX(0) rotate(0deg)',
+            transformOrigin: `${radius * 2 + rectWidth / 2}px ${radius}px`,
+            transition: 'transform 0.4s ease-in-out'
+          }}
         >
-          {text}
-        </text>
+          <rect
+            x={radius * 2}
+            y={(radius * 2 - rectHeight) / 2}
+            width={rectWidth}
+            height={rectHeight}
+            rx={30}
+            ry={30}
+            fill="var(--color-teal-dark)"
+            fillOpacity="0.43"
+          />
+
+          {/* Text centered in the rectangle */}
+          <text
+            x={radius * 2 + rectWidth / 2}
+            y={radius}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="font-circular font-bold text-3xl"
+            fill="currentColor"
+          >
+            {text}
+          </text>
+        </g>
       </svg>
     </a>
   );
@@ -73,6 +132,18 @@ function Rio({
     { type: 'S', x2: 1.5, y2: 0.65, x: 2, y: 0.85 },
   ]
 }) {
+  const [scrollOffset, setScrollOffset] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY * 0.05; // Adjust multiplier for speed
+      setScrollOffset(offset);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Convert percentage coordinates to absolute
   const pathData = pathDataPercent.map(cmd => {
     switch(cmd.type) {
@@ -139,8 +210,8 @@ function Rio({
 
         {/* Text following the path */}
         <text className="font-circular font-bold text-6xl" fill="currentColor" textAnchor="middle" dominantBaseline="middle">
-          <textPath href="#riverPath" startOffset="0%" method="align" spacing="auto">
-            From Mendoza - To Panama - From Mendoza - To Panama - From Mendoza - To Panama - From Mendoza - To Panama - From Mendoza - To Panama - From Mendoza - To Panama - From Mendoza - To Panama - From Mendoza - To Panama -
+          <textPath href="#riverPath" startOffset={`${scrollOffset}%`} method="align" spacing="auto">
+            Desde Mendoza - Hasta panama - Desde Mendoza - Hasta panama - Desde Mendoza - Hasta panama - Desde Mendoza - Hasta panama - Desde Mendoza - Hasta panama - Desde Mendoza - Hasta panama - Desde Mendoza - Hasta panama - Desde Mendoza - Hasta panama -
           </textPath>
         </text>
       </svg>
@@ -312,9 +383,10 @@ function Boton({ text = "Lorem", width = 130, height = 50, className = "", href 
   );
 }
 
-function Titulo({ line1 = "", line2 = "", line3 = "", className = "", z = 0 }) {
+function Titulo({ line1 = "", line2 = "", line3 = "", className = "", z = 0, id = "" }) {
   return (
     <div
+      id={id}
       className={`inline-block ${className}`}
       style={{
         zIndex: z
@@ -450,7 +522,15 @@ function UbicacionCard({
           className="font-circular font-bold text-3xl"
           fill="white"
         >
-          {text}
+          {text.split('\n').map((line, index, array) => (
+            <tspan
+              key={index}
+              x={cardWidth / 2}
+              dy={index === 0 ? -(array.length - 1) * 20 : 40}
+            >
+              {line}
+            </tspan>
+          ))}
         </text>
       </svg>
     </div>
@@ -644,25 +724,51 @@ function App() {
 
   return (
     <div style={{ overflowX: 'hidden', width: '100vw', height: 'calc(1500px + 200vh)', overflowY: 'auto' }}>
+      {/* Header Title */}
       <h1 className="text-white text-left absolute top-25 left-7/20 leading-[0.8]">
-        <span className="font-vegan">R </span><span className="font-roboto italic">io</span><br></br>
-        <span className="font-vegan pl-30">A </span><span className="font-roboto italic">tuel</span>
+        <span className="font-vegan">{content.header.title.line1}</span>
+        <span className="font-roboto italic">{content.header.title.line2}</span><br></br>
+        <span className="font-vegan pl-30">{content.header.title.line3}</span>
+        <span className="font-roboto italic">{content.header.title.line4}</span>
       </h1>
-      <Boton className="fixed top-20 left-2/6" text="Lorem" />
-      <Boton className="fixed top-20 left-3/6" text="Lorem" />
-      <Boton className="fixed top-20 left-4/6" text="Lorem" />
-      <Boton className="fixed top-15 left-15" text="O" width={60} height={60}/>
-      <Boton className="fixed top-15 left-35" text="O" width={60} height={60}/>
-      <Boton className="fixed top-15 left-55" text="O" width={60} height={60}/>
-      <HBoton className="fixed top-20 left-5/6" text="Lorem" />
+
+      {/* Main Navigation Buttons */}
+      {content.navigation.mainButtons.map((btn, index) => (
+        <Boton
+          key={`main-btn-${index}`}
+          className={`fixed top-20 ${btn.position}`}
+          text={btn.text}
+          href={btn.href}
+          z={9999}
+        />
+      ))}
+
+      {/* Small Navigation Buttons */}
+      {content.navigation.smallButtons.map((btn, index) => (
+        <Boton
+          key={`small-btn-${index}`}
+          className={`fixed top-15 ${btn.position}`}
+          text={btn.text}
+          href={btn.href}
+          width={60}
+          height={60}
+          z={9999}
+        />
+      ))}
+
+      {/* Horizontal Button */}
+      <HBoton
+        className={`fixed top-20 ${content.navigation.horizontalButton.position}`}
+        text={content.navigation.horizontalButton.text}
+        href={content.navigation.horizontalButton.href}
+        z={9999}
+      />
+
+      {/* Margen Component */}
       <Margen
         className="absolute top-200 left-5/20"
         z={0}
-        circles={[
-          { angle: 330, text1: "North", text2: "Top" },
-          { angle: 55, text1: "SouthEast", text2: "Bottom" },
-          { angle: 90, text1: "SouthWest", text2: "Left" }
-        ]}
+        circles={content.margen.circles}
         clipPathPercent={[
           { type: 'M', x: 0, y: 0 },
           { type: 'L', x: 1, y: 0 },
@@ -671,46 +777,57 @@ function App() {
           { type: 'Z' }
         ]}
       />
+
+      {/* Rio Component */}
       <Rio className="absolute top-175 left-5/20" z={1} />
+
+      {/* Main Title */}
       <Titulo
+        id="main-title"
         className="absolute top-340 left-5/20"
         z={2}
-        line1="Lorem ipsum dolor sit amet"
-        line2="consectetur adipiscing elit."
-        line3="Nunc vitae porttitor erat"
+        line1={content.mainTitle.line1}
+        line2={content.mainTitle.line2}
+        line3={content.mainTitle.line3}
       />
+
+      {/* Images */}
       <ImagenConBorde
         className="absolute top-510 left-2/20"
         z={2}
-        src="/assets/represa.jpg"
-        width={300}
-        height={500}
-        rotation={-10}
+        src={content.images[0].src}
+        width={content.images[0].width}
+        height={content.images[0].height}
+        rotation={content.images[0].rotation}
       />
       <ImagenConBorde
         className="absolute top-510 left-5/20"
         z={2}
-        src="/assets/map.jpg"
-        width={300}
-        height={500}
-        rotation={-5}
+        src={content.images[1].src}
+        width={content.images[1].width}
+        height={content.images[1].height}
+        rotation={content.images[1].rotation}
       />
       <ImagenConBorde
         className="absolute top-500 left-7/20"
         z={2}
-        src="/assets/Kayak.jpg"
-        width={300}
-        height={500}
-        rotation={15}
+        src={content.images[2].src}
+        width={content.images[2].width}
+        height={content.images[2].height}
+        rotation={content.images[2].rotation}
       />
+
+      {/* Main Text Block */}
       <TextoConTitulo
         className="absolute top-450 left-13/20"
         z={2}
-        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae porttitor erat. "
-        description="Duis orci diam, mollis ut eros in, eleifend volutpat lectus. Aenean tristique lacinia congue. Nullam diam leo, dignissim fermentum."
-        maxWidth={450}
-        fontSize="2.5rem"
+        title={content.mainTextBlock.title}
+        description={content.mainTextBlock.description}
+        maxWidth={content.mainTextBlock.maxWidth}
+        fontSize={content.mainTextBlock.fontSize}
       />
+
+      {/* Linea Irregular */}
       <LineaIrregular
         className="absolute top-1350 left-15/20"
         z={1}
@@ -720,68 +837,107 @@ function App() {
         strokeColor="white"
         scale={5}
       />
+
+      {/* Ubicacion Cards */}
       <UbicacionCard
         className="absolute top-600 left-15/20"
         z={2}
-        text="Mendoza"
-        cardWidth={400}
-        cardHeight={250}
-        rotation={5}
+        text={content.ubicacionCards[0].text}
+        cardWidth={content.ubicacionCards[0].cardWidth}
+        cardHeight={content.ubicacionCards[0].cardHeight}
+        rotation={content.ubicacionCards[0].rotation}
       />
+      <HBoton
+        className="absolute top-670 left-15/20"
+        text={content.ubicacionCards[0].buttonText}
+        href={content.ubicacionCards[0].buttonHref}
+        z={3}
+      />
+
       <UbicacionCard
         className="absolute top-800 left-5/20"
         z={2}
-        text="Mendoza"
-        cardWidth={400}
-        cardHeight={250}
-        rotation={-15}
+        text={content.ubicacionCards[1].text}
+        cardWidth={content.ubicacionCards[1].cardWidth}
+        cardHeight={content.ubicacionCards[1].cardHeight}
+        rotation={content.ubicacionCards[1].rotation}
       />
+      <HBoton
+        className="absolute top-870 left-5/20"
+        text={content.ubicacionCards[1].buttonText}
+        href={content.ubicacionCards[1].buttonHref}
+        z={3}
+      />
+
       <UbicacionCard
         className="absolute top-1000 left-15/20"
         z={2}
-        text="Mendoza"
-        cardWidth={400}
-        cardHeight={250}
-        rotation={10}
+        text={content.ubicacionCards[2].text}
+        cardWidth={content.ubicacionCards[2].cardWidth}
+        cardHeight={content.ubicacionCards[2].cardHeight}
+        rotation={content.ubicacionCards[2].rotation}
       />
+      <HBoton
+        className="absolute top-1070 left-15/20"
+        text={content.ubicacionCards[2].buttonText}
+        href={content.ubicacionCards[2].buttonHref}
+        z={3}
+      />
+
       <UbicacionCard
         className="absolute top-1200 left-5/20"
         z={2}
-        text="Mendoza"
-        cardWidth={400}
-        cardHeight={250}
-        rotation={-5}
+        text={content.ubicacionCards[3].text}
+        cardWidth={content.ubicacionCards[3].cardWidth}
+        cardHeight={content.ubicacionCards[3].cardHeight}
+        rotation={content.ubicacionCards[3].rotation}
       />
+      <HBoton
+        className="absolute top-1270 left-5/20"
+        text={content.ubicacionCards[3].buttonText}
+        href={content.ubicacionCards[3].buttonHref}
+        z={3}
+      />
+
+      {/* Seccion Con Pin */}
       <SeccionConPin
         className="absolute top-1500 left-0"
         z={1}
         height="200vh"
       />
+
+      {/* Seccion Con Pin Title */}
       <Titulo
         className="absolute top-1550 left-5/20"
         z={2}
-        line1="Lorem ipsum dolor sit amet"
-        line2="consectetur adipiscing elit."
+        line1={content.seccionConPin.title.line1}
+        line2={content.seccionConPin.title.line2}
       />
+
+      {/* Seccion Con Pin Text Blocks */}
       <TextoConTitulo
         className="absolute top-1650 left-5/20"
         z={2}
-        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae porttitor erat. "
-        description="Duis orci diam, mollis ut eros in, eleifend volutpat lectus. Aenean tristique lacinia congue. Nullam diam leo, dignissim fermentum."
-        maxWidth={450}
-        fontSize="2.5rem"
+        title={content.seccionConPin.textBlocks[0].title}
+        description={content.seccionConPin.textBlocks[0].description}
+        maxWidth={content.seccionConPin.textBlocks[0].maxWidth}
+        fontSize={content.seccionConPin.textBlocks[0].fontSize}
+        textAlign={content.seccionConPin.textBlocks[0].textAlign}
       />
       <TextoConTitulo
         className="absolute top-1650 left-10/20"
         z={2}
-        title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vitae porttitor erat. "
-        description="Duis orci diam, mollis ut eros in, eleifend volutpat lectus. Aenean tristique lacinia congue. Nullam diam leo, dignissim fermentum."
-        maxWidth={450}
-        fontSize="2.5rem"
-        textAlign='right'
+        title={content.seccionConPin.textBlocks[1].title}
+        description={content.seccionConPin.textBlocks[1].description}
+        maxWidth={content.seccionConPin.textBlocks[1].maxWidth}
+        fontSize={content.seccionConPin.textBlocks[1].fontSize}
+        textAlign={content.seccionConPin.textBlocks[1].textAlign}
       />
+
+      {/* Footer */}
       <h1 className="text-white text-left absolute top-1800 left-6/20 leading-[0.8] z-10">
-        <span className="font-vegan">G </span><span className="font-roboto italic">racias</span><br></br>
+        <span className="font-vegan">{content.footer.text}</span>
+        <span className="font-roboto italic">{content.footer.text2}</span><br></br>
       </h1>
     </div>
   )

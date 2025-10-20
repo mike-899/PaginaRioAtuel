@@ -1,0 +1,164 @@
+{
+  "header": {
+    "title": {
+      "line1": "R ",
+      "line2": "io",
+      "line3": "A ",
+      "line4": "tuel"
+    }
+  },
+  "navigation": {
+    "mainButtons": [
+      {
+        "text": "Historia",
+        "href": "/historia.html",
+        "position": "left-2/6"
+      },
+      {
+        "text": "Impacto",
+        "href": "/impacto-ambiental.html",
+        "position": "left-3/6"
+      },
+      {
+        "text": "Legal",
+        "href": "/conflicto-legal.html",
+        "position": "left-4/6"
+      }
+    ],
+    "smallButtons": [
+      {
+        "text": "🏠",
+        "href": "/",
+        "position": "left-15"
+      },
+      {
+        "text": "👥",
+        "href": "#actores",
+        "position": "left-35"
+      },
+      {
+        "text": "💡",
+        "href": "/soluciones.html",
+        "position": "left-55"
+      }
+    ],
+    "horizontalButton": {
+      "text": "Leer más",
+      "href": "#main-title",
+      "position": "left-5/6"
+    }
+  },
+  "margen": {
+    "circles": [
+      {
+        "angle": 330,
+        "text1": "Conflicto",
+        "text2": "Hídrico"
+      },
+      {
+        "angle": 55,
+        "text1": "Más de 100",
+        "text2": "Años"
+      },
+      {
+        "angle": 90,
+        "text1": "Dos",
+        "text2": "Provincias"
+      }
+    ]
+  },
+  "rio": {
+    "text": "De Mendoza a La Pampa - De Mendoza a La Pampa - De Mendoza a La Pampa - De Mendoza a La Pampa - De Mendoza a La Pampa - De Mendoza a La Pampa - De Mendoza a La Pampa - De Mendoza a La Pampa -"
+  },
+  "mainTitle": {
+    "line1": "Un río que nace en los Andes",
+    "line2": "y muere en la política.",
+    "line3": "El conflicto del federalismo."
+  },
+  "images": [
+    {
+      "src": "/assets/represa.jpg",
+      "width": 300,
+      "height": 500,
+      "rotation": -10
+    },
+    {
+      "src": "/assets/map.jpg",
+      "width": 300,
+      "height": 500,
+      "rotation": -5
+    },
+    {
+      "src": "/assets/Kayak.jpg",
+      "width": 300,
+      "height": 500,
+      "rotation": 15
+    }
+  ],
+  "mainTextBlock": {
+    "title": "El río Atuel conecta Mendoza y La Pampa en un conflicto de más de un siglo",
+    "description": "Desde 1947, el complejo Los Nihuiles transformó el curso del río, reduciendo drásticamente el caudal hacia La Pampa. Lo que antes eran humedales y lagunas hoy es desierto.",
+    "maxWidth": 450,
+    "fontSize": "2.5rem"
+  },
+  "ubicacionCards": [
+    {
+      "text": "1947-1948\nComplejo Los Nihuiles\nPunto de inflexión",
+      "cardWidth": 400,
+      "cardHeight": 250,
+      "rotation": 5,
+      "buttonText": "Ver más",
+      "buttonHref": "/historia.html#los-nihuiles"
+    },
+    {
+      "text": "1978\nPrimera demanda\nante la CSJN",
+      "cardWidth": 400,
+      "cardHeight": 250,
+      "rotation": -15,
+      "buttonText": "Ver más",
+      "buttonHref": "/conflicto-legal.html#judicializacion"
+    },
+    {
+      "text": "2017\nSentencia de\nRecomposición",
+      "cardWidth": 400,
+      "cardHeight": 250,
+      "rotation": 10,
+      "buttonText": "Ver más",
+      "buttonHref": "/conflicto-legal.html#fallos"
+    },
+    {
+      "text": "2020\nCaudal mínimo\n3,2 m³/s",
+      "cardWidth": 400,
+      "cardHeight": 250,
+      "rotation": -5,
+      "buttonText": "Ver más",
+      "buttonHref": "/conflicto-legal.html#fallos"
+    }
+  ],
+  "seccionConPin": {
+    "title": {
+      "line1": "Dos provincias.",
+      "line2": "Un solo río."
+    },
+    "textBlocks": [
+      {
+        "title": "Mendoza consolida su desarrollo",
+        "description": "El agua del Atuel permitió a Mendoza desarrollar sus oasis productivos, la vitivinicultura de exportación y la generación hidroeléctrica. El río es la base de su matriz económica.",
+        "maxWidth": 450,
+        "fontSize": "2.5rem",
+        "textAlign": "left"
+      },
+      {
+        "title": "La Pampa pierde sus ecosistemas",
+        "description": "Mientras tanto, el oeste pampeano sufrió la desaparición de humedales, lagunas y biodiversidad. Comunidades rurales migraron. Los suelos se salinizaron. El desierto avanzó.",
+        "maxWidth": 450,
+        "fontSize": "2.5rem",
+        "textAlign": "right"
+      }
+    ]
+  },
+  "footer": {
+    "text": "E ",
+    "text2": "xplora"
+  }
+}

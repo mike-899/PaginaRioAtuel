@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto Ambiental - Río Atuel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid #11998e;
+            padding-left: 15px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #11998e;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .alert-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .danger-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .impact-card {
+            background: linear-gradient(135deg, #11998e15 0%, #38ef7d15 100%);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #11998e;
+            transition: transform 0.3s ease;
+        }
+        
+        .impact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .impact-card h4 {
+            color: #11998e;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+        }
+        
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .internal-nav {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .internal-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .internal-nav a {
+            display: inline-block;
+            color: #11998e;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border: 1px solid #11998e;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .internal-nav a:hover {
+            background: #11998e;
+            color: white;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌿 Impacto Ambiental y Económico</h1>
+            <p class="subtitle">Las Consecuencias de un Río Sin Agua</p>
+        </header>
+        
+        <nav>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">🏠 Inicio</a>
+                <a href="historia.html" class="nav-button">📜 Historia</a>
+                <a href="impacto-ambiental.html" class="nav-button">🌿 Impacto Ambiental</a>
+                <a href="conflicto-legal.html" class="nav-button">⚖️ Conflicto Legal</a>
+                <a href="actores.html" class="nav-button">👥 Actores Sociales</a>
+                <a href="soluciones.html" class="nav-button">💡 Soluciones</a>
+            </div>
+        </nav>
+        
+        <div class="content">
+            <div class="internal-nav">
+                <h3>Navegación en esta Página</h3>
+                <a href="#la-pampa">Impactos en La Pampa</a>
+                <a href="#mendoza">Situación en Mendoza</a>
+                <a href="#ambiental">Daño Ambiental</a>
+                <a href="#economico">Impacto Económico</a>
+                <a href="#social">Consecuencias Sociales</a>
+                <a href="#cambio-climatico">Cambio Climático</a>
+            </div>
+            
+            <section id="intro" class="section">
+                <h2>Una Transformación Ambiental Profunda</h2>
+                <p>Los impactos ambientales y económicos del conflicto del Atuel son profundos y diferenciados entre las dos provincias involucradas. Mientras Mendoza consolidó su desarrollo productivo, La Pampa experimentó una transformación ambiental catastrófica que alteró irreversiblemente sus ecosistemas y la vida de sus comunidades.</p>
+                
+                <div class="danger-box">
+                    <strong>⚠️ Colapso Ecosistémico</strong>
+                    <p>La reducción del caudal del Atuel provocó efectos ambientales severos y, en gran medida, irreversibles. La transformación del paisaje pampeano representa uno de los casos más extremos de degradación ambiental por apropiación de recursos hídricos en Argentina.</p>
+                </div>
+            </section>
+            
+            <section id="la-pampa" class="section">
+                <h2>Impactos en La Pampa: Una Catástrofe Ambiental</h2>
+                
+                <h3>Transformación del Paisaje</h3>
+                <p>La reducción drástica del caudal provocó una transformación radical e irreversible del paisaje del oeste pampeano. Lo que antes eran zonas de humedales, lagunas y territorios fértiles se convirtió en extensas áreas desérticas.</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card">
+                        <h4>💧 Desecación de Cuerpos de Agua</h4>
+                        <p>Desaparición total de lagunas y humedales que caracterizaban la región. Estos ecosistemas acuáticos, que existieron durante siglos, dejaron de existir en pocas décadas.</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <h4>🏜️ Avance de la Desertificación</h4>
+                        <p>Incremento acelerado de procesos de desertificación. Suelos antes productivos se transformaron en terrenos estériles incapaces de sostener vegetación.</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <h4>🧂 Salinización de Suelos</h4>
+                        <p>Aumento de la concentración de sales en los suelos, volviéndolos improductivos. Este proceso es extremadamente difícil de revertir.</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <h4>📉 Descenso de Napas Freáticas</h4>
+                        <p>Reducción dramática del nivel de acuíferos subterráneos, afectando pozos y la disponibilidad de agua para consumo humano y ganadero.</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <h4>🦎 Pérdida de Biodiversidad</h4>
+                        <p>Desaparición de especies vegetales y animales endémicas. Alteración radical de cadenas tróficas y ecosistemas completos.</p>
+                    </div>
+                    
+                    <div class="impact-card">
+                        <h4>🌡️ Alteración Microclimática</h4>
+                        <p>Cambios en las condiciones microclimáticas locales por ausencia de cuerpos de agua. Aumento de temperaturas extremas y menor humedad ambiental.</p>
+                    </div>
+                </div>
+                
+                <h3>Colapso de Servicios Ecosistémicos</h3>
+                <div class="highlight-box">
+                    <p>Los humedales y lagunas del oeste pampeano cumplían funciones ecosistémicas vitales que se perdieron con su desaparición:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Filtración natural:</strong> Purificación de agua y retención de sedimentos</li>
+                        <li><strong>Recarga de napas:</strong> Alimentación de acuíferos subterráneos</li>
+                        <li><strong>Regulación microclimática:</strong> Moderación de temperaturas extremas</li>
+                        <li><strong>Refugio de biodiversidad:</strong> Hábitat para especies de flora y fauna</li>
+                        <li><strong>Control de erosión:</strong> Estabilización de suelos</li>
+                        <li><strong>Provisión de agua:</strong> Fuente para consumo humano, ganadero y agrícola</li>
+                    </ul>
+                </div>
+                
+                <h3>Impacto Económico y Social en La Pampa</h3>
+                <div class="danger-box">
+                    <p><strong>Consecuencias socioeconómicas devastadoras:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Colapso de la producción agrícola y ganadera:</strong> Actividades económicas tradicionales dejaron de ser viables</li>
+                        <li><strong>Empobrecimiento de comunidades rurales:</strong> Pérdida de ingresos y medios de subsistencia</li>
+                        <li><strong>Migración forzada:</strong> Comunidades enteras abandonaron sus territorios ancestrales</li>
+                        <li><strong>Desarticulación de actividades turísticas:</strong> Pérdida de atractivos naturales y culturales</li>
+                        <li><strong>Vulnerabilidad estructural:</strong> La región quedó en situación de pobreza permanente</li>
+                        <li><strong>Pérdida de identidad cultural:</strong> Ruptura de vínculos tradicionales con el territorio</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="mendoza" class="section">
+                <h2>Desarrollo en Mendoza: Beneficios sin Compensación</h2>
+                
+                <p>En contraste con la situación de La Pampa, la gestión del río Atuel permitió a Mendoza consolidar un modelo de desarrollo económico basado en el aprovechamiento intensivo del recurso hídrico.</p>
+                
+                <h3>Beneficios Económicos Obtenidos</h3>
+                <div class="highlight-box">
+                    <ul style="margin-left: 2rem;">
+                        <li><strong>Consolidación de la producción agrícola bajo riego:</strong> Expansión de viñedos, frutales y hortalizas de exportación</li>
+                        <li><strong>Desarrollo de matriz energética hidroeléctrica:</strong> Generación de energía renovable para la región cuyana</li>
+                        <li><strong>Expansión de oasis productivos:</strong> Crecimiento económico de San Rafael y General Alvear</li>
+                        <li><strong>Desarrollo vitivinícola:</strong> Consolidación de Mendoza como principal región vitivinícola de Argentina</li>
+                        <li><strong>Atracción de inversiones:</strong> Infraestructura que facilitó el desarrollo industrial y turístico</li>
+                    </ul>
+                </div>
+                
+                <h3>La Cuestión de la Externalización de Costos</h3>
+                <div class="alert-box">
+                    <p><strong>Crítica fundamental:</strong> El modelo de desarrollo implementado en Mendoza generó beneficios económicos significativos, pero lo hizo externalizando el costo ambiental hacia La Pampa. No se implementaron mecanismos de compensación aguas abajo, lo que generó una situación de injusticia ambiental estructural.</p>
+                </div>
+                
+                <p>Este patrón de desarrollo asimétrico es uno de los puntos más conflictivos del debate. Mientras Mendoza argumenta su derecho histórico al aprovechamiento del recurso, La Pampa señala que ese desarrollo se logró a costa del empobrecimiento y degradación ambiental de su territorio.</p>
+            </section>
+            
+            <section id="ambiental" class="section">
+                <h2>Daño Ambiental Detallado</h2>
+                
+                <h3>Alteración de Acuíferos</h3>
+                <p>La desaparición de humedales y la reducción del caudal superficial afectaron gravemente los sistemas de recarga de acuíferos subterráneos. Las napas freáticas descendieron dramáticamente, comprometiendo la disponibilidad de agua subterránea para consumo humano y productivo.</p>
+                
+                <h3>Desplazamiento de Especies</h3>
+                <p>La pérdida de hábitats acuáticos y la transformación del paisaje provocaron el desplazamiento y desaparición de especies autóctonas de flora y fauna. Especies de aves migratorias que utilizaban los humedales pampeanos como punto de descanso perdieron estos refugios vitales.</p>
+                
+                <h3>Degradación del Suelo</h3>
+                <div class="highlight-box">
+                    <p>La ausencia de agua provocó múltiples procesos de degradación del suelo:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Pérdida de materia orgánica</li>
+                        <li>Compactación y encostramiento superficial</li>
+                        <li>Erosión eólica e hídrica</li>
+                        <li>Acumulación de sales</li>
+                        <li>Pérdida de estructura y fertilidad</li>
+                    </ul>
+                </div>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Indicador Ambiental</th>
+                            <th>Antes (pre-1950)</th>
+                            <th>Después (post-1950)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Superficie de Humedales</strong></td>
+                            <td>Miles de hectáreas activas</td>
+                            <td>Desaparecidos en su mayoría</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lagunas</strong></td>
+                            <td>Sistema complejo de lagunas</td>
+                            <td>Secas permanentemente</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Biodiversidad</strong></td>
+                            <td>Alta diversidad de especies</td>
+                            <td>Pérdida significativa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Calidad del Suelo</strong></td>
+                            <td>Productivo, con buen drenaje</td>
+                            <td>Degradado, salinizado</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Actividad Económica</strong></td>
+                            <td>Agricultura y ganadería activas</td>
+                            <td>Colapsadas en gran parte</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+            <section id="economico" class="section">
+                <h2>Impacto Económico Comparado</h2>
+                
+                <h3>Balance Asimétrico</h3>
+                <p>El conflicto del Atuel representa un caso paradigmático de desarrollo económico asimétrico basado en la apropiación de recursos naturales compartidos. Mientras una provincia se benefició económicamente, la otra soportó los costos ambientales y sociales.</p>
+                
+                <div class="impact-grid">
+                    <div class="impact-card" style="border-left-color: #28a745;">
+                        <h4>✅ Mendoza: Beneficios</h4>
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                            <li>Crecimiento del PIB regional</li>
+                            <li>Exportaciones vitivinícolas</li>
+                            <li>Generación eléctrica</li>
+                            <li>Desarrollo turístico</li>
+                            <li>Inversión en infraestructura</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="impact-card" style="border-left-color: #dc3545;">
+                        <h4>❌ La Pampa: Costos</h4>
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                            <li>Colapso económico regional</li>
+                            <li>Pérdida de actividad productiva</li>
+                            <li>Migración poblacional</li>
+                            <li>Empobrecimiento estructural</li>
+                            <li>Degradación del capital natural</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="social" class="section">
+                <h2>Consecuencias Sociales y Culturales</h2>
+                
+                <h3>Pérdida de Patrimonio Cultural</h3>
+                <p>La transformación del paisaje no solo afectó el ambiente físico, sino también el patrimonio cultural de las comunidades locales, especialmente de los pueblos originarios ranqueles, para quienes los humedales y el río eran parte fundamental de su cosmovisión y modo de vida tradicional.</p>
+                
+                <div class="highlight-box">
+                    <strong>Impactos culturales documentados:</strong>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Pérdida de sitios ceremoniales y culturales asociados al agua</li>
+                        <li>Ruptura de tradiciones y prácticas ancestrales</li>
+                        <li>Desaparición de conocimientos ecológicos tradicionales</li>
+                        <li>Desarraigo de comunidades de sus territorios históricos</li>
+                    </ul>
+                </div>
+                
+                <h3>Testimonios de Pobladores</h3>
+                <p>Los testimonios de pobladores rurales y comunidades indígenas documentan la pérdida de medios de vida, la desaparición de lagunas que conocieron en su infancia, y los daños culturales y ambientales que experimentaron directamente. Estos testimonios han sido fundamentales en las causas judiciales y en la visibilización del conflicto.</p>
+            </section>
+            
+            <section id="cambio-climatico" class="section">
+                <h2>Cambio Climático: Agravante del Conflicto</h2>
+                
+                <p>El cambio climático agrega una capa adicional de complejidad al conflicto del Atuel, afectando la disponibilidad y predictibilidad del recurso hídrico.</p>
+                
+                <div class="alert-box">
+                    <strong>⚠️ Efectos del Cambio Climático:</strong>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Variabilidad de precipitaciones:</strong> Mayor irregularidad en las lluvias y nevadas cordilleranas</li>
+                        <li><strong>Retroceso de glaciares:</strong> Reducción de reservas hídricas naturales en la cordillera</li>
+                        <li><strong>Eventos extremos:</strong> Mayor frecuencia de sequías severas y eventos de precipitación intensa</li>
+                        <li><strong>Reducción de caudales base:</strong> Disminución del flujo promedio del río</li>
+                    </ul>
+                </div>
+                
+                <h3>Desafíos Futuros</h3>
+                <p>Mendoza argumenta que la reducción de caudales cordilleranos por cambio climático dificulta el cumplimiento de los fallos judiciales. Sin embargo, expertos señalan que esto hace aún más urgente una gestión equitativa y sostenible del recurso disponible.</p>
+                
+                <div class="highlight-box">
+                    <strong>Necesidad de Planificación Adaptativa:</strong>
+                    <p>La incertidumbre climática hace urgente la incorporación de escenarios climáticos futuros en los diseños de obras, acuerdos interprovinciales y planes de gestión hídrica. La adaptación al cambio climático debe ser un componente central de cualquier solución al conflicto.</p>
+                </div>
+            </section>
+            
+            <div class="danger-box" style="margin-top: 3rem;">
+                <h3 style="color: #dc3545;">⚠️ Un Costo Ambiental Irreversible</h3>
+                <p>La apropiación del Atuel generó daños ambientales que, en muchos casos, son irreversibles o requerirían décadas y recursos significativos para revertirse parcialmente. La desaparición de humedales, la extinción local de especies y la degradación de suelos representan pérdidas permanentes del capital natural argentino.</p>
+                <p style="margin-top: 1rem;"><strong>La restauración ambiental debe ser una prioridad, pero también debe reconocerse que algunos daños nunca podrán repararse completamente.</strong></p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 - Río Atuel: Conflicto Hídrico Interprovincial</p>
+            <p>Información basada en fuentes históricas, jurídicas y ambientales</p>
+        </footer>
+    </div>
+</body>
+</html>

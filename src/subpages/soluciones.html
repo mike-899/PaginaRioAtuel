@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soluciones y Futuro - Río Atuel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid #43e97b;
+            padding-left: 15px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #43e97b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .solution-card {
+            background: linear-gradient(135deg, #43e97b15 0%, #38f9d715 100%);
+            border: 2px solid #43e97b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .solution-card h4 {
+            color: #43e97b;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .measures-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .measure-card {
+            background: white;
+            border-left: 4px solid #43e97b;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .measure-card h4 {
+            color: #43e97b;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .lesson-box {
+            background: #e8f5e9;
+            border: 2px solid #43e97b;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+        }
+        
+        .lesson-box h4 {
+            color: #2e7d32;
+            margin-bottom: 1rem;
+        }
+        
+        .international-example {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .internal-nav {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .internal-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .internal-nav a {
+            display: inline-block;
+            color: #43e97b;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border: 1px solid #43e97b;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .internal-nav a:hover {
+            background: #43e97b;
+            color: white;
+        }
+        
+        .key-principles {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+        }
+        
+        .key-principles h3 {
+            color: white;
+            margin-bottom: 1rem;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .measures-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💡 Soluciones y Perspectivas Futuras</h1>
+            <p class="subtitle">Hacia una Gestión Equitativa y Sostenible</p>
+        </header>
+        
+        <nav>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">🏠 Inicio</a>
+                <a href="historia.html" class="nav-button">📜 Historia</a>
+                <a href="impacto-ambiental.html" class="nav-button">🌿 Impacto Ambiental</a>
+                <a href="conflicto-legal.html" class="nav-button">⚖️ Conflicto Legal</a>
+                <a href="actores.html" class="nav-button">👥 Actores Sociales</a>
+                <a href="soluciones.html" class="nav-button">💡 Soluciones</a>
+            </div>
+        </nav>
+        
+        <div class="content">
+            <div class="internal-nav">
+                <h3>Navegación en esta Página</h3>
+                <a href="#medidas">Medidas Propuestas</a>
+                <a href="#restauracion">Restauración</a>
+                <a href="#gobernanza">Gobernanza</a>
+                <a href="#internacional">Casos Internacionales</a>
+                <a href="#lecciones">Lecciones Aprendidas</a>
+                <a href="#futuro">Futuro</a>
+            </div>
+            
+            <section id="intro" class="section">
+                <h2>¿Es Posible una Solución Justa y Sostenible?</h2>
+                <p>Después de más de un siglo de conflicto, la búsqueda de soluciones para el río Atuel requiere combinar voluntad política, conocimiento técnico, recursos financieros y participación social. Las experiencias nacional e internacional ofrecen lecciones valiosas sobre cómo gestionar recursos hídricos compartidos de manera equitativa y sostenible.</p>
+                
+                <div class="key-principles">
+                    <h3>🎯 Principios para una Solución Efectiva</h3>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Equidad:</strong> Distribución justa del recurso que reconozca derechos de ambas provincias</li>
+                        <li><strong>Sostenibilidad:</strong> Garantizar la viabilidad a largo plazo de ecosistemas y actividades productivas</li>
+                        <li><strong>Participación:</strong> Inclusión de todos los actores relevantes en toma de decisiones</li>
+                        <li><strong>Transparencia:</strong> Acceso público a información hidrológica y decisiones</li>
+                        <li><strong>Adaptación:</strong> Flexibilidad para ajustar acuerdos según cambios climáticos</li>
+                        <li><strong>Cumplimiento:</strong> Mecanismos efectivos de monitoreo y sanciones por incumplimiento</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="medidas" class="section">
+                <h2>Medidas Propuestas para Mitigar Impactos</h2>
+                
+                <p>Para abordar el conflicto del Atuel se han propuesto diversas medidas técnicas, institucionales y sociales que deben implementarse de manera coordinada.</p>
+                
+                <div class="measures-grid">
+                    <div class="measure-card">
+                        <h4>💧 Fijación de Caudales Mínimos</h4>
+                        <p>Establecer caudales mínimos científicamente fundamentados que permitan sostener funciones ecosistémicas básicas en La Pampa, con monitoreo continuo y ajustes según disponibilidad hídrica.</p>
+                    </div>
+                    
+                    <div class="measure-card">
+                        <h4>🏗️ Obras de Infraestructura</h4>
+                        <p>Construcción de obras de conducción y regulación que permitan liberar caudales hacia La Pampa sin comprometer completamente el riego en Mendoza. Esto requiere inversión conjunta Nación-provincias.</p>
+                    </div>
+                    
+                    <div class="measure-card">
+                        <h4>🌱 Restauración Ambiental</h4>
+                        <p>Programas de restauración de humedales, revegetación, recuperación de suelos y reintroducción de especies nativas en áreas degradadas del oeste pampeano.</p>
+                    </div>
+                    
+                    <div class="measure-card">
+                        <h4>📊 Monitoreo Permanente</h4>
+                        <p>Sistema de monitoreo independiente de caudales, calidad de agua, estado de ecosistemas y cumplimiento de acuerdos, con información pública y transparente.</p>
+                    </div>
+                    
+                    <div class="measure-card">
+                        <h4>🤝 Gestión Participativa</h4>
+                        <p>Fortalecimiento de comités interprovinciales con participación de gobiernos, expertos, comunidades locales y organizaciones sociales en la toma de decisiones.</p>
+                    </div>
+                    
+                    <div class="measure-card">
+                        <h4>💰 Compensación y Reconversión</h4>
+                        <p>Planes de compensación para poblaciones afectadas y programas de reconversión productiva que permitan adaptarse a nuevas realidades hídricas.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="caudales" class="section">
+                <h2>Caudales Ecológicos: Cuánta Agua es Necesaria</h2>
+                
+                <div class="solution-card">
+                    <h4>📏 Determinación Científica de Caudales</h4>
+                    <p>Los caudales ecológicos son aquellos necesarios para mantener funciones ecosistémicas básicas. Su determinación requiere:</p>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li>Estudios hidrológicos de régimen natural del río</li>
+                        <li>Análisis de requerimientos de especies clave</li>
+                        <li>Evaluación de servicios ecosistémicos a mantener</li>
+                        <li>Consideración de variabilidad estacional e interanual</li>
+                        <li>Modelado de escenarios climáticos futuros</li>
+                    </ul>
+                </div>
+                
+                <h3>El Caudal Mínimo de 3,2 m³/s</h3>
+                <div class="highlight-box">
+                    <p>La Corte Suprema fijó en 2020 un caudal mínimo interino de 3,2 metros cúbicos por segundo. Este caudal:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>No es definitivo:</strong> Es una medida transitoria mientras se acuerda un régimen permanente</li>
+                        <li><strong>Es un piso, no un techo:</strong> Representa el mínimo absoluto, no necesariamente el óptimo</li>
+                        <li><strong>Requiere ajustes:</strong> Debe adaptarse según estacionalidad y disponibilidad</li>
+                        <li><strong>Es insuficiente para restauración completa:</strong> Permite algunas funciones básicas pero no restaura el sistema histórico</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="restauracion" class="section">
+                <h2>Restauración Ambiental: Un Desafío Complejo</h2>
+                
+                <p>La restauración de los ecosistemas degradados del oeste pampeano es técnicamente posible pero requiere décadas, recursos significativos y compromiso sostenido.</p>
+                
+                <div class="solution-card">
+                    <h4>🌿 Componentes de un Programa de Restauración</h4>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li><strong>Reintroducción de agua:</strong> Gradual y controlada para no generar erosión o inundaciones súbitas</li>
+                        <li><strong>Recuperación de suelos:</strong> Tratamiento de salinización, incorporación de materia orgánica, control de erosión</li>
+                        <li><strong>Revegetación:</strong> Plantación de especies nativas adaptadas a condiciones de humedales</li>
+                        <li><strong>Reintroducción de fauna:</strong> Programas para especies clave que desaparecieron</li>
+                        <li><strong>Restauración de conectividad:</strong> Recuperación de corredores ecológicos</li>
+                        <li><strong>Monitoreo adaptativo:</strong> Seguimiento permanente para ajustar estrategias</li>
+                    </ul>
+                </div>
+                
+                <h3>Realismo sobre la Restauración</h3>
+                <div class="highlight-box">
+                    <strong>⚠️ Límites de la Restauración:</strong>
+                    <p>Es importante reconocer que algunos daños son irreversibles o solo parcialmente reversibles. La desaparición de especies, la alteración de suelos y la pérdida de servicios ecosistémicos durante décadas no pueden revertirse completamente. Sin embargo, la restauración puede recuperar funciones ecosistémicas básicas y mejorar significativamente las condiciones ambientales.</p>
+                </div>
+            </section>
+            
+            <section id="gobernanza" class="section">
+                <h2>Gobernanza Compartida: Gestión Integrada</h2>
+                
+                <p>La experiencia del Atuel demuestra la necesidad de marcos institucionales más robustos para gestionar cuencas compartidas.</p>
+                
+                <h3>Elementos de una Gobernanza Efectiva</h3>
+                <div class="solution-card">
+                    <h4>🏛️ Institucionalidad Fortalecida</h4>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li><strong>Autoridad de cuenca interprovincial:</strong> Con capacidad de decisión vinculante</li>
+                        <li><strong>Representación equilibrada:</strong> De ambas provincias, Nación, expertos y sociedad civil</li>
+                        <li><strong>Financiamiento permanente:</strong> Presupuesto garantizado para operación y proyectos</li>
+                        <li><strong>Independencia técnica:</strong> Decisiones basadas en evidencia científica, no solo intereses políticos</li>
+                        <li><strong>Mecanismos de cumplimiento:</strong> Sanciones efectivas por incumplimiento de acuerdos</li>
+                    </ul>
+                </div>
+                
+                <h3>Transparencia e Información</h3>
+                <div class="highlight-box">
+                    <p><strong>La transparencia es fundamental:</strong> Todos los datos hidrológicos (caudales, precipitaciones, usos, calidad) deben ser públicos y accesibles en tiempo real. La información es un bien público que permite el control ciudadano y reduce conflictos por asimetrías de información.</p>
+                </div>
+                
+                <h3>Participación de Comunidades</h3>
+                <p>Las comunidades locales, pueblos indígenas y organizaciones sociales deben tener espacios formales de participación con capacidad real de incidencia, no solo consulta simbólica.</p>
+            </section>
+            
+            <section id="internacional" class="section">
+                <h2>Lecciones de Casos Internacionales</h2>
+                
+                <p>Otros conflictos por cuencas compartidas en el mundo ofrecen experiencias valiosas aplicables al caso del Atuel.</p>
+                
+                <div class="international-example">
+                    <h4>🌊 Río Colorado (Estados Unidos - México)</h4>
+                    <p><strong>Desafío similar:</strong> Cuenca compartida con múltiples usos (riego, urbano, hidroelectricidad) y creciente escasez por cambio climático.</p>
+                    <p><strong>Soluciones implementadas:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Tratado binacional (1944) con ajustes periódicos</li>
+                        <li>Acuerdos de reparto de déficit en años de escasez</li>
+                        <li>Programas de restauración ecológica del delta</li>
+                        <li>Mecanismos de intercambio y flexibilidad</li>
+                        <li>Fondos binacionales para obras y restauración</li>
+                    </ul>
+                </div>
+                
+                <div class="international-example">
+                    <h4>🌊 Río Danubio (Europa)</h4>
+                    <p><strong>Caso emblemático:</strong> Cuenca que cruza 10 países con la Comisión Internacional para la Protección del Río Danubio (ICPDR).</p>
+                    <p><strong>Elementos exitosos:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Gestión integrada con participación de todos los países ribereños</li>
+                        <li>Programas de monitoreo coordinado</li>
+                        <li>Planes de gestión de cuenca compartidos</li>
+                        <li>Financiamiento conjunto para proyectos</li>
+                        <li>Mecanismos de resolución de disputas</li>
+                    </ul>
+                </div>
+                
+                <div class="international-example">
+                    <h4>🌊 Río Mekong (Sudeste Asiático)</h4>
+                    <p><strong>Complejidad:</strong> Cuenca compartida por 6 países con diferentes niveles de desarrollo.</p>
+                    <p><strong>Aportes relevantes:</strong></p>
+                    <ul style="margin-left: 2rem; margin-top: 0.5rem;">
+                        <li>Comisión del Río Mekong (MRC) para diálogo permanente</li>
+                        <li>Estudios científicos conjuntos sobre impactos</li>
+                        <li>Notificación obligatoria de proyectos con impacto transfronterizo</li>
+                        <li>Programas de desarrollo sustentable de cuenca</li>
+                    </ul>
+                </div>
+                
+                <h3>Principios Aplicables al Atuel</h3>
+                <div class="lesson-box">
+                    <h4>📚 Lecciones Transferibles</h4>
+                    <p>De estos casos internacionales, se extraen principios aplicables al Atuel:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Necesidad de instituciones permanentes con capacidad técnica</li>
+                        <li>Importancia del intercambio transparente de información</li>
+                        <li>Financiamiento compartido para obras y mitigación</li>
+                        <li>Flexibilidad para adaptarse a cambios climáticos</li>
+                        <li>Mecanismos formales de resolución de conflictos</li>
+                        <li>Compromiso de largo plazo más allá de gobiernos específicos</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="lecciones" class="section">
+                <h2>Lecciones del Conflicto del Atuel</h2>
+                
+                <p>El conflicto del Atuel ofrece lecciones relevantes para otros conflictos hídricos en Argentina y el mundo.</p>
+                
+                <div class="lesson-box">
+                    <h4>1. Datos Confiables y Monitoreo Independiente</h4>
+                    <p>La falta de información transparente y confiable alimenta desconfianzas y dificulta acuerdos. Se requiere monitoreo independiente con datos públicos y accesibles.</p>
+                </div>
+                
+                <div class="lesson-box">
+                    <h4>2. Marcos Institucionales Interjurisdiccionales Robustos</h4>
+                    <p>Las buenas intenciones no son suficientes. Se necesitan instituciones con capacidad legal, técnica y financiera para gestionar cuencas compartidas.</p>
+                </div>
+                
+                <div class="lesson-box">
+                    <h4>3. Integración de Perspectivas Socioambientales y Productivas</h4>
+                    <p>Las soluciones puramente técnicas fallan si no consideran dimensiones sociales, culturales y económicas. Se requiere enfoque integrado.</p>
+                </div>
+                
+                <div class="lesson-box">
+                    <h4>4. Gobernanza Compartida con Criterios Científicos y de Equidad</h4>
+                    <p>Las decisiones deben basarse en evidencia científica pero también incorporar principios de justicia, equidad y derechos humanos.</p>
+                </div>
+                
+                <div class="lesson-box">
+                    <h4>5. Financiamiento Conjunto para Obras y Restauración</h4>
+                    <p>La restauración ambiental y las obras de infraestructura necesarias requieren inversión significativa que debe ser compartida por Nación y provincias.</p>
+                </div>
+                
+                <div class="lesson-box">
+                    <h4>6. Participación Activa de Comunidades Afectadas</h4>
+                    <p>Las soluciones impuestas desde arriba tienen menor legitimidad y viabilidad. La participación de comunidades locales es esencial.</p>
+                </div>
+                
+                <div class="lesson-box">
+                    <h4>7. Planificación Adaptativa ante Cambio Climático</h4>
+                    <p>La incertidumbre climática requiere flexibilidad y capacidad de ajustar acuerdos según cambios en disponibilidad hídrica.</p>
+                </div>
+            </section>
+            
+            <section id="futuro" class="section">
+                <h2>Perspectivas Futuras: Desafíos y Oportunidades</h2>
+                
+                <h3>Desafíos Persistentes</h3>
+                <div class="highlight-box">
+                    <ul style="margin-left: 2rem;">
+                        <li><strong>Cambio climático:</strong> Reducción de caudales cordilleranos por retroceso glaciar y menor precipitación</li>
+                        <li><strong>Diferencias políticas:</strong> Cambios de gobierno pueden alterar voluntad de cumplir acuerdos</li>
+                        <li><strong>Limitaciones presupuestarias:</strong> Falta de financiamiento para obras y restauración</li>
+                        <li><strong>Complejidad técnica:</strong> Dificultad de conciliar múltiples usos del agua</li>
+                        <li><strong>Tiempos prolongados:</strong> La restauración ecológica requiere décadas</li>
+                    </ul>
+                </div>
+                
+                <h3>Oportunidades para Avanzar</h3>
+                <div class="solution-card">
+                    <h4>✅ Caminos Posibles</h4>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li><strong>Fallos judiciales vinculantes:</strong> La CSJN ha establecido bases legales sólidas</li>
+                        <li><strong>Experiencia acumulada:</strong> Décadas de estudios técnicos y sociales disponibles</li>
+                        <li><strong>Conciencia social creciente:</strong> Mayor visibilización del conflicto en la opinión pública</li>
+                        <li><strong>Marcos legales modernos:</strong> Leyes ambientales que favorecen la recomposición</li>
+                        <li><strong>Tecnologías disponibles:</strong> Herramientas técnicas para monitoreo y gestión eficiente</li>
+                        <li><strong>Casos comparables:</strong> Experiencias internacionales de las que aprender</li>
+                    </ul>
+                </div>
+                
+                <h3>El Rol del Estado Nacional</h3>
+                <p>El Estado nacional debe asumir un rol activo como mediador, financiador y garante del cumplimiento de acuerdos. No puede limitarse a ser árbitro neutral cuando hay derechos constitucionales en juego.</p>
+                
+                <h3>Hacia una Cultura del Agua</h3>
+                <div class="highlight-box">
+                    <p><strong>Cambio cultural necesario:</strong> Más allá de marcos legales e institucionales, se requiere un cambio cultural en cómo entendemos el agua: no como recurso infinito para apropiación ilimitada, sino como bien común que debe gestionarse con criterios de equidad, sostenibilidad y justicia intergeneracional.</p>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>Síntesis: ¿Qué se Necesita para Resolver el Conflicto?</h2>
+                
+                <div class="key-principles">
+                    <h3>🎯 Elementos Esenciales para una Solución</h3>
+                    <ol style="margin-left: 2rem; margin-top: 1rem; line-height: 2;">
+                        <li><strong>Voluntad política sostenida</strong> de ambas provincias y la Nación</li>
+                        <li><strong>Caudales ecológicos mínimos</strong> científicamente determinados y legalmente garantizados</li>
+                        <li><strong>Obras de infraestructura</strong> con financiamiento conjunto Nación-provincias</li>
+                        <li><strong>Programas de restauración ambiental</strong> de largo plazo</li>
+                        <li><strong>Institucionalidad robusta</strong> con autoridad de cuenca interprovincial</li>
+                        <li><strong>Transparencia e información pública</strong> sobre caudales y decisiones</li>
+                        <li><strong>Participación efectiva</strong> de comunidades afectadas</li>
+                        <li><strong>Mecanismos de cumplimiento</strong> con sanciones por incumplimiento</li>
+                        <li><strong>Planificación adaptativa</strong> que incorpore cambio climático</li>
+                        <li><strong>Compromiso de largo plazo</strong> que trascienda gobiernos específicos</li>
+                    </ol>
+                </div>
+                
+                <div class="highlight-box" style="margin-top: 2rem;">
+                    <h3 style="color: #43e97b;">💧 Un Río, Dos Provincias, Una Sola Solución Posible</h3>
+                    <p>El conflicto del Atuel no tiene soluciones mágicas ni rápidas. Requiere compromiso, recursos, tiempo y, sobre todo, reconocimiento mutuo de derechos y responsabilidades. La pregunta no es si es posible una solución, sino si existe la voluntad política y social para construirla.</p>
+                    <p style="margin-top: 1rem;"><strong>El agua que nace en la cordillera no pertenece exclusivamente a Mendoza ni a La Pampa: es un recurso compartido que debe gestionarse con criterios de equidad, sostenibilidad y justicia. Este es el desafío que el federalismo argentino debe asumir.</strong></p>
+                </div>
+            </section>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 - Río Atuel: Conflicto Hídrico Interprovincial</p>
+            <p>Información basada en fuentes históricas, jurídicas y ambientales</p>
+            <p style="margin-top: 1rem;"><em>Un conflicto que nos desafía a repensar cómo gestionamos nuestros recursos compartidos</em></p>
+        </footer>
+    </div>
+</body>
+</html>

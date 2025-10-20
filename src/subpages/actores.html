@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actores Sociales - Río Atuel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        
+        nav {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .nav-button {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+        
+        .content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .section {
+            margin-bottom: 3rem;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid #f093fb;
+            padding-left: 15px;
+        }
+        
+        .section h3 {
+            color: #34495e;
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .highlight-box {
+            background: #f8f9fa;
+            border-left: 4px solid #f093fb;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+        }
+        
+        .actor-card {
+            background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%);
+            border: 2px solid #f093fb;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .actor-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .actor-card h4 {
+            color: #f093fb;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .role-card {
+            background: white;
+            border-left: 4px solid #f093fb;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .role-card h4 {
+            color: #f093fb;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .testimony-box {
+            background: #fff9e6;
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        
+        .internal-nav {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+        }
+        
+        .internal-nav h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        
+        .internal-nav a {
+            display: inline-block;
+            color: #f093fb;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+            border: 1px solid #f093fb;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .internal-nav a:hover {
+            background: #f093fb;
+            color: white;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>👥 Actores Sociales del Conflicto</h1>
+            <p class="subtitle">Las Voces Detrás del Agua</p>
+        </header>
+        
+        <nav>
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button">🏠 Inicio</a>
+                <a href="historia.html" class="nav-button">📜 Historia</a>
+                <a href="impacto-ambiental.html" class="nav-button">🌿 Impacto Ambiental</a>
+                <a href="conflicto-legal.html" class="nav-button">⚖️ Conflicto Legal</a>
+                <a href="actores.html" class="nav-button">👥 Actores Sociales</a>
+                <a href="soluciones.html" class="nav-button">💡 Soluciones</a>
+            </div>
+        </nav>
+        
+        <div class="content">
+            <div class="internal-nav">
+                <h3>Navegación en esta Página</h3>
+                <a href="#comunidades">Comunidades Locales</a>
+                <a href="#indigenas">Pueblos Indígenas</a>
+                <a href="#organizaciones">Organizaciones Ambientales</a>
+                <a href="#productores">Productores</a>
+                <a href="#rol">Rol en el Conflicto</a>
+                <a href="#participacion">Participación Ciudadana</a>
+            </div>
+            
+            <section id="intro" class="section">
+                <h2>La Dimensión Humana del Conflicto</h2>
+                <p>Detrás de las disputas jurídicas, técnicas y políticas del conflicto del Atuel, hay personas, familias, comunidades y pueblos cuyos destinos están directamente vinculados al río. Los actores sociales han tenido un rol clave en visibilizar el conflicto, documentar sus impactos y exigir soluciones.</p>
+                
+                <div class="highlight-box">
+                    <strong>Importancia de la Participación Social:</strong>
+                    <p>La participación activa de comunidades locales, pobladores rurales, pueblos indígenas y organizaciones ambientales ha sido fundamental para mantener el conflicto en la agenda pública, presentar evidencia científica y testimonial, y presionar por soluciones justas que consideren no solo aspectos técnicos, sino también derechos humanos y justicia social.</p>
+                </div>
+            </section>
+            
+            <section id="comunidades" class="section">
+                <h2>Comunidades Locales del Oeste Pampeano</h2>
+                
+                <p>Las comunidades rurales del oeste de La Pampa han sido las más afectadas por la desaparición del caudal del Atuel. Su experiencia directa ha sido documentada en testimonios que revelan la profundidad del impacto social y cultural del conflicto.</p>
+                
+                <div class="actor-card">
+                    <h4>🏘️ Pobladores Rurales</h4>
+                    <p><strong>Impacto vivido:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Pérdida de medios de subsistencia basados en agricultura y ganadería</li>
+                        <li>Desaparición de lagunas y humedales que conocieron en su infancia</li>
+                        <li>Migración forzada hacia otros centros urbanos</li>
+                        <li>Deterioro de la calidad de vida por falta de agua</li>
+                        <li>Ruptura de vínculos familiares y comunitarios históricos</li>
+                    </ul>
+                </div>
+                
+                <div class="testimony-box">
+                    <p><strong>Testimonios documentados:</strong> Los pobladores rurales han relatado ante tribunales, medios de comunicación y comisiones investigadoras cómo las lagunas que existían en su juventud se secaron completamente, cómo las tierras productivas se volvieron estériles, y cómo se vieron obligados a abandonar el territorio de sus antepasados. Estos testimonios constituyen evidencia testimonial vital en las causas judiciales.</p>
+                </div>
+                
+                <h3>Actividades Económicas Perdidas</h3>
+                <div class="highlight-box">
+                    <p>Las comunidades locales dependían del río y sus ecosistemas asociados para:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Agricultura de subsistencia:</strong> Cultivos regados con agua del Atuel</li>
+                        <li><strong>Ganadería:</strong> Pastoreo en áreas de humedales y acceso a agua para el ganado</li>
+                        <li><strong>Pesca artesanal:</strong> En lagunas y cursos de agua</li>
+                        <li><strong>Actividades turísticas incipientes:</strong> Vinculadas a los atractivos naturales</li>
+                        <li><strong>Recolección:</strong> De productos naturales de los humedales</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="indigenas" class="section">
+                <h2>Pueblos Indígenas: Los Ranqueles</h2>
+                
+                <p>Los ranqueles, pueblo originario de la región, tienen una relación ancestral con el territorio del oeste pampeano y sus ecosistemas acuáticos. Para ellos, el conflicto del Atuel no es solo ambiental o económico, sino también cultural y espiritual.</p>
+                
+                <div class="actor-card">
+                    <h4>🪶 El Pueblo Ranquel</h4>
+                    <p><strong>Vínculos con el río y el territorio:</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li><strong>Cosmovisión:</strong> Los humedales y el agua son elementos sagrados en la cosmovisión ranquel</li>
+                        <li><strong>Sitios ceremoniales:</strong> Muchos lugares vinculados al agua tenían significado espiritual y ritual</li>
+                        <li><strong>Conocimientos tradicionales:</strong> Saberes ancestrales sobre gestión del agua y ecosistemas</li>
+                        <li><strong>Identidad territorial:</strong> El territorio del oeste pampeano es parte fundamental de su identidad como pueblo</li>
+                        <li><strong>Derechos colectivos:</strong> Derecho a mantener su vínculo cultural con el territorio y sus recursos</li>
+                    </ul>
+                </div>
+                
+                <h3>Impacto Cultural</h3>
+                <div class="highlight-box">
+                    <p>La desaparición del río y sus ecosistemas asociados representó para los ranqueles:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Pérdida de sitios ceremoniales y culturalmente significativos</li>
+                        <li>Ruptura de prácticas tradicionales vinculadas al agua</li>
+                        <li>Daño a su patrimonio inmaterial y memoria colectiva</li>
+                        <li>Dificultad para transmitir conocimientos tradicionales a nuevas generaciones</li>
+                        <li>Afectación de su derecho a la identidad cultural y territorial</li>
+                    </ul>
+                </div>
+                
+                <h3>Participación en el Conflicto</h3>
+                <p>Las comunidades ranqueles han participado activamente en el conflicto presentando sus testimonios, constituyéndose como actores en causas judiciales y demandando el reconocimiento de sus derechos colectivos sobre el territorio y el agua. Su participación ha sido crucial para incorporar la dimensión cultural del conflicto.</p>
+            </section>
+            
+            <section id="organizaciones" class="section">
+                <h2>Organizaciones Ambientales y de la Sociedad Civil</h2>
+                
+                <p>Organizaciones no gubernamentales, grupos ambientalistas y colectivos ciudadanos han desempeñado un rol fundamental en visibilizar el conflicto, producir información técnica y presionar por soluciones.</p>
+                
+                <div class="role-grid">
+                    <div class="role-card">
+                        <h4>🔬 Investigación y Documentación</h4>
+                        <p>Producción de estudios técnicos, informes ambientales, relevamientos de biodiversidad y documentación fotográfica que evidencian la transformación del paisaje y la magnitud del daño ambiental.</p>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h4>⚖️ Participación Judicial</h4>
+                        <p>Constitución como "amigos del tribunal" (amicus curiae) en causas judiciales, presentando pruebas, peritajes y argumentos técnicos que fortalecen las demandas de La Pampa.</p>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h4>📢 Campañas de Visibilización</h4>
+                        <p>Organización de campañas mediáticas, documentales, exposiciones fotográficas y eventos públicos para mantener el conflicto en la agenda pública y generar conciencia ciudadana.</p>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h4>🤝 Articulación Social</h4>
+                        <p>Coordinación entre diferentes actores (comunidades locales, académicos, organizaciones) para generar redes de apoyo, intercambiar información y fortalecer la capacidad de incidencia.</p>
+                    </div>
+                </div>
+                
+                <h3>Estrategias Utilizadas</h3>
+                <div class="highlight-box">
+                    <p>Las organizaciones ambientales han implementado diversas estrategias:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li>Producción de informes técnicos con base científica</li>
+                        <li>Campañas en redes sociales y medios tradicionales</li>
+                        <li>Organización de foros, seminarios y conferencias</li>
+                        <li>Presión sobre autoridades provinciales y nacionales</li>
+                        <li>Articulación con redes ambientalistas internacionales</li>
+                        <li>Monitoreo ciudadano de caudales y calidad de agua</li>
+                    </ul>
+                </div>
+            </section>
+            
+            <section id="productores" class="section">
+                <h2>Productores Agrícolas: Perspectivas Contrapuestas</h2>
+                
+                <p>Los productores agrícolas tienen intereses diferenciados según su ubicación geográfica. Mientras los productores pampeanos perdieron sus medios de producción, los productores mendocinos dependen del agua del Atuel para sostener su actividad.</p>
+                
+                <div class="actor-card">
+                    <h4>🌾 Productores Pampeanos</h4>
+                    <p><strong>Situación:</strong> Colapso de la producción agrícola y ganadera en el oeste pampeano por falta de agua. Muchos productores se vieron obligados a abandonar la actividad o migrar a otras regiones.</p>
+                    <p><strong>Reclamos:</strong> Restitución de caudales que permitan reactivar la producción. Compensación por décadas de pérdidas económicas.</p>
+                </div>
+                
+                <div class="actor-card">
+                    <h4>🍇 Productores Mendocinos</h4>
+                    <p><strong>Situación:</strong> Dependencia del agua del Atuel para riego de viñedos, frutales y cultivos. El río es fundamental para la economía productiva de San Rafael y General Alvear.</p>
+                    <p><strong>Preocupaciones:</strong> Temor a que la liberación de caudales hacia La Pampa afecte la disponibilidad de agua para riego y comprometa la producción vitivinícola y frutícola.</p>
+                </div>
+                
+                <h3>Tensión Entre Modelos Productivos</h3>
+                <p>El conflicto evidencia la tensión entre diferentes modelos productivos y concepciones sobre el uso del agua. Mientras algunos defienden el derecho histórico al aprovechamiento intensivo, otros reclaman una gestión más equitativa y sostenible que considere los límites ecológicos y la justicia distributiva.</p>
+            </section>
+            
+            <section id="rol" class="section">
+                <h2>Rol Clave de los Actores Sociales</h2>
+                
+                <p>Los actores sociales han sido fundamentales en todas las etapas del conflicto, desde la denuncia inicial hasta la participación en soluciones propuestas.</p>
+                
+                <h3>Contribuciones Principales</h3>
+                <div class="role-grid">
+                    <div class="role-card">
+                        <h4>📊 Evidencia Testimonial</h4>
+                        <p>Testimonios de primera mano que documentan la transformación del paisaje, la pérdida de medios de vida y los daños culturales. Esta evidencia cualitativa ha sido crucial en causas judiciales.</p>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h4>🔍 Monitoreo Ciudadano</h4>
+                        <p>Vigilancia de caudales, calidad del agua y cumplimiento de acuerdos. La participación ciudadana ha complementado el monitoreo oficial.</p>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h4>📚 Conocimiento Local</h4>
+                        <p>Aportes de conocimientos tradicionales y ecológicos sobre el funcionamiento de ecosistemas, que enriquecen los análisis técnicos.</p>
+                    </div>
+                    
+                    <div class="role-card">
+                        <h4>💪 Presión Política</h4>
+                        <p>Movilización social y presión sobre autoridades para mantener el conflicto en la agenda pública y exigir soluciones efectivas.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="participacion" class="section">
+                <h2>Participación Ciudadana y Gobernanza</h2>
+                
+                <p>La experiencia del conflicto del Atuel demuestra la importancia de la participación ciudadana en la gestión de recursos hídricos. Los actores sociales no solo son receptores pasivos de decisiones, sino agentes activos que deben formar parte de los procesos de toma de decisiones.</p>
+                
+                <h3>Principios de Participación</h3>
+                <div class="highlight-box">
+                    <p>La participación efectiva de actores sociales requiere:</p>
+                    <ul style="margin-left: 2rem; margin-top: 1rem;">
+                        <li><strong>Acceso a información:</strong> Transparencia en datos hidrológicos, decisiones políticas y estudios técnicos</li>
+                        <li><strong>Espacios de diálogo:</strong> Instancias formales donde comunidades puedan expresar sus perspectivas</li>
+                        <li><strong>Reconocimiento de derechos:</strong> Garantía de derechos de comunidades locales e indígenas sobre territorio y agua</li>
+                        <li><strong>Incidencia real:</strong> Que la participación no sea meramente consultiva sino que influya efectivamente en decisiones</li>
+                        <li><strong>Capacitación:</strong> Fortalecimiento de capacidades técnicas de comunidades para participar activamente</li>
+                    </ul>
+                </div>
+                
+                <h3>Medios de Comunicación e Influencia Pública</h3>
+                <p>Los medios de comunicación han jugado un rol crucial en visibilizar el conflicto, aunque también han contribuido a polarizar narrativas. Mientras algunos medios destacan la pérdida ambiental y social en La Pampa, otros enfatizan la defensa del aprovechamiento productivo en Mendoza.</p>
+                
+                <div class="testimony-box">
+                    <p><strong>Importancia de la narrativa:</strong> La forma en que se cuenta la historia del Atuel influye decisivamente en la percepción pública y en la presión política para soluciones. Las organizaciones sociales han trabajado activamente en construir narrativas que visibilicen no solo los aspectos técnicos, sino también las dimensiones humanas y culturales del conflicto.</p>
+                </div>
+            </section>
+            
+            <div class="highlight-box" style="background: linear-gradient(135deg, #f093fb15 0%, #f5576c15 100%); border-left: 4px solid #f5576c; margin-top: 3rem;">
+                <h3 style="color: #f5576c;">👥 Las Voces que No Deben Olvidarse</h3>
+                <p>Detrás de cada dato estadístico, cada fallo judicial y cada argumento técnico, hay personas cuyas vidas fueron transformadas por el conflicto del Atuel. Escuchar y reconocer la legitimidad de estas voces es fundamental para cualquier solución que pretenda ser justa y sostenible.</p>
+                <p style="margin-top: 1rem;"><strong>La participación activa de comunidades locales, pueblos indígenas y organizaciones sociales no es un obstáculo, sino una condición necesaria para la legitimidad y viabilidad de las soluciones.</strong></p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 - Río Atuel: Conflicto Hídrico Interprovincial</p>
+            <p>Información basada en fuentes históricas, jurídicas y ambientales</p>
+        </footer>
+    </div>
+</body>
+</html>
